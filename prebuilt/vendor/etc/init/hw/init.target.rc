@@ -63,6 +63,12 @@ on post-fs
     exec - system system -- /vendor/bin/init.qti.qseecomd.sh
     write /dev/ipa 1
 
+    # OTG support
+    on property:persist.sys.oem.otg_support=true
+    write /sys/class/power_supply/usb/otg_switch 1
+    on property:persist.sys.oem.otg_support=false
+    write /sys/class/power_supply/usb/otg_switch 0
+
 on post-fs-data
     mkdir /data/vendor/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
