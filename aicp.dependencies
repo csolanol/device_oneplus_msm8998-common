@@ -17,7 +17,7 @@
   {
     "repository": "LineageOS/android_packages_resources_devicesettings",
     "target_path": "packages/resources/devicesettings",
-    "revision": "staging/lineage-15.1"
+    "branch": "staging/lineage-15.1"
   },
   {
     "repository": "LineageOS/android_device_qcom_common",
