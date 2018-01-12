@@ -10,9 +10,9 @@
     "branch": "o8.1"
   },
   {
-    "repository": "nathanchance/op5",
+    "repository": "LineageOS/android_kernel_oneplus_msm8998",
     "target_path": "kernel/oneplus/msm8998",
-    "branch": "8.x-unified"
+    "branch": "lineage-15.1"
   },
   {
     "repository": "LineageOS/android_packages_resources_devicesettings",
