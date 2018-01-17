@@ -219,3 +219,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Wi-Fi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
+
+# OTG support
+PRODUCT_PROPERTY_OVERRIDES += \
+persist.sys.oem.otg_support=true
