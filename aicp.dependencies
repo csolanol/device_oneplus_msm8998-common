@@ -10,9 +10,9 @@
     "branch": "o8.1"
   },
   {
-    "repository": "LineageOS/android_kernel_oneplus_msm8998",
+    "repository": "AICP/kernel_oneplus_msm8998",
     "target_path": "kernel/oneplus/msm8998",
-    "branch": "lineage-15.1"
+    "branch": "o8.1"
   },
   {
     "repository": "LineageOS/android_packages_resources_devicesettings",
@@ -22,6 +22,6 @@
   {
     "repository": "LineageOS/android_device_qcom_common",
     "target_path": "device/qcom/common",
-    "branch": "staging/lineage-15.1" 
+    "branch": "staging/lineage-15.1"
   }
 ]
