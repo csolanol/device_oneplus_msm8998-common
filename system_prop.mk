@@ -56,11 +56,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     bt.max.hfpclient.connections=1 \
-    persist.bt.a2dp_offload_cap=false \
+    persist.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
     qcom.bluetooth.soc=cherokee \
     ro.bluetooth.a4wp=false \
     ro.bluetooth.emb_wp_mode=true \
-    ro.bluetooth.wipower=true
+    ro.bluetooth.wipower=true \
+    persist.bt.a2dp.aptx_disable=false \
+    persist.bt.a2dp.aptx_hd_disable=false \
+    persist.bt.enableAptXHD=true
 
 # Cabl
 PRODUCT_PROPERTY_OVERRIDES += \
