@@ -258,6 +258,7 @@ TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/recovery.fstab
 #TARGET_RECOVERY_UI_LIB := librecovery_ui_msm
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_SUPPRESS_EMMC_WIPE := true
+BOARD_SUPPRESS_SECURE_ERASE := true
 
 # Releasetools
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_oneplus
