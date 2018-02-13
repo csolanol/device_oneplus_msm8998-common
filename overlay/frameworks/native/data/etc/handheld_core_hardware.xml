@@ -30,6 +30,6 @@
          pass all CTS tests for this feature must include feature  -->
          <feature name="android.hardware.vr.high_performance" />
     <!-- Devices that support VR headtracking features and pass all CDD
-         requirements may include
-         <feature name="android.hardware.vr.headtracking" /> -->
+         requirements may include -->
+         <feature name="android.hardware.vr.headtracking" />
 </permissions>
