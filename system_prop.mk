@@ -61,7 +61,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     bt.max.hfpclient.connections=1 \
-    persist.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
+    persist.bt.a2dp_offload_cap=sbc-aptx-aptxhd \
     qcom.bluetooth.soc=cherokee \
     ro.bluetooth.a4wp=false \
     ro.bluetooth.emb_wp_mode=true \
@@ -71,7 +71,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.bt.a2dp.aac_disable=true \
     persist.bt.a2dp.aptx_disable=false \
     persist.bt.a2dp.aptx_hd_disable=false \
-    persist.bt.a2dp_offload_cap=sbc-aptx-aptxhd \
     persist.bt.enableAptXHD=true
 
 # Cabl
@@ -87,7 +86,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     camera.hal1.packagelist=com.skype.raider,com.instagram.android,com.tencent.mm,com.whatsapp \
     camera.disable_zsl_mode=0 \
     persist.camera.zsl.mode=1 \
-    persist.camera.HAL3.enabled=1
+    #persist.camera.HAL3.enabled=1
 
 # CNE
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -128,7 +127,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.debug.wfd.enable=1 \
     persist.sys.wfd.virtual=0 \
     persist.hwc.enable_vds=1 \
-    sdm.debug.disable_partial_split=1
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.hwui.renderer=skiagl \
+    #sdm.debug.disable_partial_split=1
 
 #IMS / VoLTE
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -240,11 +242,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Tethering
 PRODUCT_PROPERTY_OVERRIDES += \
-net.tethering.noprovisioning=true
+    net.tethering.noprovisioning=true
 
 # Timeservice
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true
+
+# UI tweaks
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.min.fling_velocity=140 \
+    ro.max.fling_velocity=20000
 
 # USB
 PRODUCT_PROPERTY_OVERRIDES += \
