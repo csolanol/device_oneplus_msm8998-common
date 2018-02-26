@@ -1,4 +1,11 @@
 on init
+    # Disable UFS powersaving
+    write /sys/devices/soc/1da4000.ufshc/clkscale_enable 0
+    write /sys/devices/soc/1da4000.ufshc/clkgate_enable 0
+    write /sys/devices/soc/1da4000.ufshc/hibern8_on_idle_enable 0
+
+    write /sys/module/lpm_levels/parameters/sleep_disabled Y
+
     write /dev/stune/foreground/schedtune.sched_boost_no_override 1
     write /dev/stune/top-app/schedtune.sched_boost_no_override 1
     write /dev/stune/schedtune.colocate 0
@@ -28,17 +35,52 @@ on boot
     chmod 0660 /dev/cpuset/camera-daemon/tasks
 
 on charger
-    write /sys/module/msm_thermal/core_control/cpus_offlined 254
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1248000
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1267200
+    # Enable UFS powersaving
+    write /sys/devices/soc/1da4000.ufshc/clkscale_enable 1
+    write /sys/devices/soc/1da4000.ufshc/clkgate_enable 1
+    write /sys/devices/soc/1da4000.ufshc/hibern8_on_idle_enable 1
+
+    write /sys/module/lpm_levels/parameters/sleep_disabled N
+
+    # disable thermal core control
+    write /sys/module/msm_thermal/core_control/enabled 0
+
+    # online cpu 0 and set governor powersave
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
+
+    # offline remaining cores
     write /sys/devices/system/cpu/cpu1/online 0
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
+    write /sys/devices/system/cpu/cpu4/online 0
     write /sys/devices/system/cpu/cpu5/online 0
     write /sys/devices/system/cpu/cpu6/online 0
     write /sys/devices/system/cpu/cpu7/online 0
 
+on late-fs
+    # Enable boot time fs tuning (ro like system is on sda, rw like userdata is on sde)
+    write /sys/block/sda/queue/iostats 0
+    write /sys/block/sda/queue/nr_requests 256
+    write /sys/block/sda/queue/read_ahead_kb 2048
+    write /sys/block/sde/queue/iostats 0
+    write /sys/block/sde/queue/nr_requests 256
+    write /sys/block/sda/queue/read_ahead_kb 2048
+
 on property:sys.boot_completed=1
+    # Disable boot time fs tuning
+    write /sys/block/sde/queue/read_ahead_kb 1024
+    write /sys/block/sde/queue/nr_requests 128
+    write /sys/block/sde/queue/iostats 1
+    write /sys/block/sda/queue/read_ahead_kb 1024
+    write /sys/block/sda/queue/nr_requests 128
+    write /sys/block/sda/queue/iostats 1
+
+    # Enable UFS powersaving
+    write /sys/devices/soc/1da4000.ufshc/clkscale_enable 1
+    write /sys/devices/soc/1da4000.ufshc/clkgate_enable 1
+    write /sys/devices/soc/1da4000.ufshc/hibern8_on_idle_enable 1
+
     # disable thermal core control until CPU is configured
     write /sys/module/msm_thermal/core_control/enabled 0
 
