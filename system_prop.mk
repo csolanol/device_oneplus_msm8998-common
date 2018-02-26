@@ -114,7 +114,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # FRP
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.frp.pst=/dev/block/bootdevice/by-name/frp
+    ro.frp.pst=/dev/block/bootdevice/by-name/config
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
