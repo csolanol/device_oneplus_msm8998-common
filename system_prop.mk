@@ -130,7 +130,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.debug.wfd.enable=1 \
     persist.sys.force_sw_gles=0 \
     persist.sys.wfd.virtual=0 \
-    persist.hwc.enable_vds=1 \
+    persist.hwc.enable_vds=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.hwui.renderer=skiagl \
