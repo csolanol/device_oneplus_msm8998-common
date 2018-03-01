@@ -84,12 +84,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.stats.debugexif=3080192 \
     persist.ts.rtmakeup=false
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    camera.hal1.packagelist=com.skype.raider,com.instagram.android,com.tencent.mm,com.whatsapp \
-    camera.disable_zsl_mode=0 \
-    persist.camera.zsl.mode=1 \
-    #persist.camera.HAL3.enabled=1
-
 # CNE
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.cne.feature=1

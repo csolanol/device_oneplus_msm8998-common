@@ -269,6 +269,9 @@ on boot
     chmod 660 /proc/touchpanel/up_arrow_enable
     chmod 660 /proc/touchpanel/up_swipe_enable
 
+    # HAL1 package list
+    setprop camera.hal1.packagelist "com.skype.raider,com.instagram.android,com.tencent.mm,com.whatsapp"
+
     #lifeng@bsp tp 2015/6/3 for firmware update
     write /sys/bus/i2c/devices/5-0020/tp_fw_update 0
     #write /proc/s1302/fw_update 0
