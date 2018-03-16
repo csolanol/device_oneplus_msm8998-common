@@ -11,6 +11,9 @@ lib64/libteeclientjniv2.so
 # DASH
 -sbin/dashd;rootfs
 
+# SmarcardService
+-priv-app/SmartcardService/SmartcardService.apk
+
 # Graphics firmware
 vendor/firmware/a530_gpmu.fw2
 vendor/firmware/a530_pfp.fw
