@@ -133,6 +133,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
+    debug.hwui.use_buffer_age=false \
     debug.gralloc.enable_fb_ubwc=1 \
     ro.sf.lcd_density=420 \
     ro.opengles.version=196610 \
