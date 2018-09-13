@@ -453,4 +453,6 @@
          2 - The device DOES NOT have a permanent menu key; ignore autodetection. -->
     <integer name="config_overrideHasPermanentMenuKey">2</integer>
 
+    <!-- Whether doze feature is enabled by default in settings. -->
+    <bool name="config_doze_enabled_by_default">true</bool>
 </resources>
