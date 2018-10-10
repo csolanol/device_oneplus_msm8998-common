@@ -115,7 +115,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # 0 = disable
 # 9 = enable FD , TCM , disable CT , NSRM
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.dpm.feature=11
+    persist.vendor.dpm.feature=9
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -127,6 +127,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sf.lcd_density=420 \
+    debug.sf.disable_backpressure=1 \
+    debug.sf.hw=1 \
     debug.gralloc.enable_fb_ubwc=1 \
     debug.gralloc.gfx_ubwc_disable=0 \
     debug.sf.disable_backpressure=1 \
