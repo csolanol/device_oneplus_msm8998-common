@@ -59,6 +59,7 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a73
 
 TARGET_USES_UEFI := true
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom ehci-hcd.park=3 
@@ -78,6 +79,7 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
 TARGET_KERNEL_CONFIG := lineage_oneplus5_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+#TARGET_KERNEL_BUILD_VARIANT := user
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
@@ -205,6 +207,8 @@ SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
 
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+
 # Enable dexpreopt to speed boot time
 ifeq ($(HOST_OS),linux)
   ifneq ($(TARGET_BUILD_VARIANT),eng)
@@ -222,6 +226,7 @@ TARGET_FS_CONFIG_GEN += $(PLATFORM_PATH)/config.fs
 TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
+BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(PLATFORM_PATH)/manifest.xml
@@ -269,6 +274,7 @@ TARGET_USES_INTERACTION_BOOST := true
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/recovery.fstab
 #TARGET_RECOVERY_UI_LIB := librecovery_ui_msm
 BOARD_HAS_LARGE_FILESYSTEM := true
+#BOARD_SUPPRESS_SECURE_ERASE := true
 
 # Releasetools
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_oneplus
@@ -299,8 +305,6 @@ PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
 TARGET_COPY_OUT_VENDOR := vendor
 
-PRODUCT_SHIPPING_API_LEVEL := 25
-
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 # Wifi
@@ -319,6 +323,7 @@ WIFI_DRIVER_OPERSTATE_PATH := "/sys/class/net/wlan0/operstate"
 WIFI_DRIVER_STATE_CTRL_PARAM := "/sys/kernel/boot_wlan/boot_wlan"
 WIFI_DRIVER_STATE_OFF := 0
 WIFI_DRIVER_STATE_ON := 1
+#WIFI_HIDL_FEATURE_AWARE := true
 
 # inherit from the proprietary version
 -include vendor/oneplus/msm8998-common/BoardConfigVendor.mk
