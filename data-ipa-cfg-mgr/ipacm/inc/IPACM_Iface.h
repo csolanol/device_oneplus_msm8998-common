@@ -144,7 +144,6 @@ public:
 
 	/* software routing disable */
 	virtual int handle_software_routing_disable(void);
-	void delete_iface(void);
 
 private:
 
