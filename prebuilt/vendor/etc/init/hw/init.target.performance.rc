@@ -1,7 +1,6 @@
 on init
     # Disable UFS powersaving
     write /sys/devices/soc/${ro.boot.bootdevice}/clkgate_enable 0
-    write /sys/devices/soc/${ro.boot.bootdevice}/hibern8_on_idle_enable 0
     write /sys/module/lpm_levels/parameters/sleep_disabled Y
 
     # Setup schedtune
@@ -11,7 +10,7 @@ on init
 
     # Add a cpuset for the camera daemon
     mkdir /dev/cpuset/camera-daemon 0750 cameraserver cameraserver
-    write /dev/cpuset/camera-daemon/cpus 0-7
+    write /dev/cpuset/camera-daemon/cpus 0
     write /dev/cpuset/camera-daemon/mems 0
     chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
     chmod 0660 /dev/cpuset/camera-daemon/tasks
@@ -28,14 +27,16 @@ on init
 on boot
     #Set on boot cpusets
     write /dev/cpuset/top-app/cpus 0-3,4-7
-    write /dev/cpuset/foreground/cpus 0-3,4-7
     write /dev/cpuset/background/cpus 0-7
     write /dev/cpuset/system-background/cpus 0-7
+    write /dev/cpuset/restricted/cpus 0-7
+    write /dev/cpuset/camera-daemon/cpus 0-7
+
+    write /sys/block/sda/queue/read_ahead_kb 512
 
 on charger
     # Enable UFS powersaving
     write /sys/devices/soc/${ro.boot.bootdevice}/clkgate_enable 1
-    write /sys/devices/soc/${ro.boot.bootdevice}/hibern8_on_idle_enable 1
 
     write /sys/module/lpm_levels/parameters/sleep_disabled N
 
@@ -56,7 +57,7 @@ on charger
     write /sys/devices/system/cpu/cpu7/online 0
 
 on late-fs
-    # Enable boot time fs tuning (ro like system is on sda, rw like userdata is on sde)
+    # Enable boot time fs tuning (ro like system is on sde/f, rw like userdata is on sda)
     write /sys/block/sda/queue/iostats 0
     write /sys/block/sda/queue/iosched/slice_idle 0
     write /sys/block/sda/queue/read_ahead_kb 2048
@@ -66,6 +67,9 @@ on late-fs
     write /sys/block/sdf/queue/read_ahead_kb 2048
     write /sys/block/sdf/queue/nr_requests 256
     write /sys/block/dm-0/queue/read_ahead_kb 2048
+    write /sys/block/sde/queue/iostats 0
+    write /sys/block/sde/queue/nr_requests 256
+    write /sys/block/sde/queue/read_ahead_kb 2048
 
 on post-fs
     # Disable sched autogroup
@@ -85,9 +89,14 @@ on property:sys.boot_completed=1
     # Disable boot time fs tuning
     write /sys/block/sda/queue/read_ahead_kb 128
     write /sys/block/sda/queue/nr_requests 128
+    write /sys/block/sda/queue/iostats 1
     write /sys/block/sdf/queue/read_ahead_kb 128
     write /sys/block/sdf/queue/nr_requests 128
+    write /sys/block/sdf/queue/iostats 1
     write /sys/block/dm-0/queue/read_ahead_kb 128
+    write /sys/block/sde/queue/read_ahead_kb 128
+    write /sys/block/sde/queue/nr_requests 128
+    write /sys/block/sde/queue/iostats 1
 
     # Enable UFS powersaving
     write /sys/devices/soc/${ro.boot.bootdevice}/clkgate_enable 1
@@ -170,7 +179,6 @@ on property:sys.boot_completed=1
 
     # Setup post-boot cpusets
     write /dev/cpuset/top-app/cpus 0-7
-    write /dev/cpuset/foreground/cpus 0-3,6-7
     write /dev/cpuset/background/cpus 0-1
     write /dev/cpuset/system-background/cpus 0-3
     write /dev/cpuset/camera-daemon/cpus 0-3
