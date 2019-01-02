@@ -41,6 +41,9 @@ TARGET_USE_SDCLANG := true
 TARGET_BOOTLOADER_BOARD_NAME := msm8998
 TARGET_NO_BOOTLOADER := true
 
+# Compile libhwui in performance mode
+#HWUI_COMPILE_FOR_PERF := true
+
 # Platform
 TARGET_BOARD_PLATFORM := msm8998
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno540
@@ -204,10 +207,10 @@ OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
 
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
-
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 # Enable dexpreopt to speed boot time
 ifeq ($(HOST_OS),linux)
@@ -323,7 +326,6 @@ WIFI_DRIVER_OPERSTATE_PATH := "/sys/class/net/wlan0/operstate"
 WIFI_DRIVER_STATE_CTRL_PARAM := "/sys/kernel/boot_wlan/boot_wlan"
 WIFI_DRIVER_STATE_OFF := 0
 WIFI_DRIVER_STATE_ON := 1
-#WIFI_HIDL_FEATURE_AWARE := true
 
 # inherit from the proprietary version
 -include vendor/oneplus/msm8998-common/BoardConfigVendor.mk
