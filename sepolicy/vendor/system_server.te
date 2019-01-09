@@ -24,3 +24,13 @@ allow system_server vendor_keylayout_file:file { r_file_perms };
 
 # Vibrator
 allow system_server sysfs_vibrator:file { r_file_perms };
+
+allow system_server default_prop:property_service set;
+allow system_server adsprpc_prop:file read;
+allow system_server bg_boot_complete_prop:file read;
+allow system_server bg_daemon_prop:file read;
+allow system_server bluetooth_prop:file read;
+allow system_server camera_prop:file read;
+allow system_server cnd_vendor_prop:file read;
+allow system_server console_silent_prop:file read;
+allow system_server ctl_LKCore_prop:file read;
