@@ -200,7 +200,7 @@ PRODUCT_PACKAGES += \
 
 # Doze
 PRODUCT_PACKAGES += \
-    OneplusDoze
+    Doze
 
 # DRM
 PRODUCT_PACKAGES += \
