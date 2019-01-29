@@ -6,3 +6,5 @@ allow init sysfs_graphics:lnk_file { r_file_perms };
 allow init sysfs_leds:file { r_file_perms };
 allow init sysfs_leds:lnk_file { r_file_perms };
 allow init proc:file { r_file_perms };
+allow init hal_power_hwservice:hwservice_manager add;
+allow init hidl_base_hwservice:hwservice_manager add;

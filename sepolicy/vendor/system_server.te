@@ -21,6 +21,7 @@ allow system_server sysfs_battery_supply:file { rw_file_perms };
 allow system_server sysfs_fpc_key:file { rw_file_perms };
 allow system_server vendor_file:file { r_file_perms execute };
 allow system_server vendor_keylayout_file:file { r_file_perms };
+allow system_server default_prop:property_service set;
 
 # Vibrator
 allow system_server sysfs_vibrator:file { r_file_perms };
