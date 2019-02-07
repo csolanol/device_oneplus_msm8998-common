@@ -657,4 +657,7 @@
     <string-array name="config_deviceKeyHandlerClasses" translatable="false">
         <item>com.slim.device.KeyHandler</item>
     </string-array>
+
+    <!-- Enable all rotations -->
+    <bool name="config_allowAllRotations">true</bool>
 </resources>
