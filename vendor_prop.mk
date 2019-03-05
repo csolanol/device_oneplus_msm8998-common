@@ -109,7 +109,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Connor
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.connor.disable=0
+    persist.vendor.connor.disable=1
 
 # Core control
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -118,9 +118,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Data
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.use_data_netmgrd=true \
     persist.data.netmgrd.qos.enable=true \
-    persist.data.mode=concurrent
+    persist.vendor.data.mode=concurrent \
+    ro.vendor.use_data_netmgrd=true
 
 # DPM
 # 0 = disable
@@ -273,6 +273,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.ims.dropset_feature=0 \
     persist.vendor.qti.telephony.vt_cam_interface=1 \
     persist.vendor.radio.add_power_save=1 \
+    persist.vendor.radio.apm_sim_not_pwdn=1 \
     persist.vendor.radio.custom_ecc=1 \
     persist.vendor.radio.data_con_rprt=1 \
     persist.vendor.radio.data_ltd_sys_ind=1 \
