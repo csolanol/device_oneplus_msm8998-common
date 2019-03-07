@@ -660,4 +660,7 @@
 
     <!-- Enable all rotations -->
     <bool name="config_allowAllRotations">true</bool>
+
+    <!-- Set AOD off by default -->
+    <bool name="config_dozeAlwaysOnEnabled">false</bool>
 </resources>
