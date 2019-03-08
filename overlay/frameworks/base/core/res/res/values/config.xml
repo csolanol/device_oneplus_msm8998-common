@@ -632,7 +632,7 @@
     <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
 
     <!-- Whether the display blanks itself when transitioning from a doze to a non-doze state -->
-    <bool name="config_displayBlanksAfterDoze">true</bool>
+    <bool name="config_displayBlanksAfterDoze">false</bool>
 
     <!-- Allow automatic adjusting of the screen brightness while dozing in low power state. -->
     <bool name="config_allowAutoBrightnessWhileDozing">true</bool>
