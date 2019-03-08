@@ -663,4 +663,7 @@
 
     <!-- Set AOD off by default -->
     <bool name="config_dozeAlwaysOnEnabled">false</bool>
+
+    <!-- Audio panel view placement. Is left side enabled -->
+    <bool name="config_audioPanelOnLeftSide">true</bool>
 </resources>
