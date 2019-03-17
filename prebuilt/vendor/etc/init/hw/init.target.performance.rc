@@ -6,7 +6,7 @@ on init
 
     # Setup schedtune
     write /dev/stune/foreground/schedtune.prefer_idle 1
-    write /dev/stune/top-app/schedtune.boost 1
+    write /dev/stune/top-app/schedtune.boost 0
     write /dev/stune/top-app/schedtune.prefer_idle 1
 
     # Add a cpuset for the camera daemon
@@ -98,7 +98,7 @@ on property:sys.boot_completed=1
     # disable thermal core control until CPU is configured
     write /sys/module/msm_thermal/core_control/enabled 0
 
-    # online little cluster
+    # Online little cluster
     write /sys/devices/system/cpu/cpu0/online 1
 
     # Configure schedutil for big cores
@@ -107,7 +107,7 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us 20000
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 1
 
-    # online big cluster
+    # Online big cluster
     write /sys/devices/system/cpu/cpu4/online 1
 
     # Configure schedutil for LITTLE cores
@@ -116,12 +116,17 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpufreq/policy4/schedutil/down_rate_limit_us 20000
     write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/iowait_boost_enable 1
 
-    # Ensure minimum frequencies set to 300MHz
-    write /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq 300000
-    write /sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq 300000
+    # Set min cpu freq
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 518400
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 806400
 
     # CPU is configured, re-enable thermal core control
     write /sys/module/msm_thermal/core_control/enabled 1
+
+    # Setup CPU boost
+    write /sys/module/cpu_boost/parameters/input_boost_enabled 1
+    write /sys/module/cpu_boost/parameters/input_boost_freq "0:1036800 1:0 2:0 3:0 4:1056000 5:0 6:0 7:0"
+    write /sys/module/cpu_boost/parameters/input_boost_ms 150
 
     # Enable bus-dcvs
     write /sys/class/devfreq/soc:qcom,cpubw/governor "bw_hwmon"
