@@ -664,4 +664,7 @@
     <!-- Check proximity sensor on wake -->
     <bool name="config_proximityCheckOnWake">true</bool>
     <bool name="config_proximityCheckOnWakeEnabledByDefault">false</bool>
+
+    <!-- Statusbar Burn in protection -->
+    <bool name="config_statusBarBurnInProtection">true</bool>
 </resources>
