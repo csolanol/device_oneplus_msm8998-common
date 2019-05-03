@@ -330,6 +330,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.sensors.multishake=true \
     persist.vendor.sensors.direct_channel=true
 
+# SurfaceFlinger
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.surface_flinger.protected_contents=true
+
 # Tethering
 PRODUCT_PROPERTY_OVERRIDES += \
     net.tethering.noprovisioning=true
