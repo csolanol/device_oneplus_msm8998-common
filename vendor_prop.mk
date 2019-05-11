@@ -144,11 +144,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.gralloc.enable_fb_ubwc=1 \
     ro.sf.lcd_density=420 \
     ro.opengles.version=196610 \
+    ro.sf.hwc_set_default_colormode=true \
     debug.sf.hw=1 \
     debug.gralloc.gfx_ubwc_enable=1 \
     debug.sf.disable_backpressure=1 \
-    debug.sf.latch_unsignaled=1 \
     debug.sf.enable_hwc_vds=1 \
+    debug.sf.latch_unsignaled=1 \
     dev.pm.dyn_samplingrate=1 \
     persist.demo.hdmirotationlock=false \
     persist.debug.wfd.enable=1 \
@@ -161,9 +162,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.gralloc.enable_fb_ubwc=1 \
     vendor.gralloc.disable_ubwc=0 \
     vendor.gralloc.disable_wb_ubwc=1 \
+    vendor.display.disable_partial_split=1 \
+    vendor.display.disable_rotator_downscale=1 \
     vendor.display.disable_skip_validate=1 \
+    vendor.display.enable_default_color_mode=1 \
     vendor.display.perf_hint_window=50 \
-    vendor.display.enable_default_color_mode=0 \
     vendor.video.disable.ubwc=1
 
 # IZat OptInApp overlay enable
