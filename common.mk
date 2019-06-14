@@ -475,7 +475,7 @@ PRODUCT_PACKAGES += \
 
 # Vendor security patch level
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.aicp.build.vendor_security_patch=2019-04-01
+    ro.aicp.build.vendor_security_patch=2018-06-05
 
 # Verity
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
