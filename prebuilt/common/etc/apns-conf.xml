@@ -502,7 +502,7 @@
       carrier_id = "1839"
       mcc="204"
       mnc="04"
-      apn="VZWIMS"
+      apn="IMS"
       type="ims,ia"
       protocol="IPV4V6"
       roaming_protocol="IPV4V6"
@@ -518,7 +518,7 @@
       carrier_id = "1839"
       mcc="204"
       mnc="04"
-      apn="VZWIMS"
+      apn="IMS"
       type="ims,ia"
       protocol="IPV4V6"
       roaming_protocol="IPV4V6"
@@ -934,7 +934,6 @@
       mvno_match_data="BE-Transatel"
       mvno_type="spn"
    />
-
 
  <apn carrier="netgprs.com"
       carrier_id = "2271"
@@ -1511,7 +1510,7 @@
       mcc="208"
       mnc="15"
       apn="iliad"
-      mmsc="http://mms.iliad-italia.it"
+      mmsc="http://mms.iliad.it"
       type="default,supl,mms"
       mvno_match_data="F003"
       mvno_type="gid"
@@ -1626,7 +1625,6 @@
       mvno_match_data="Coriolis"
       mvno_type="spn"
   />
-
 
   <apn carrier="Internet móvil"
       mcc="214"
@@ -3111,7 +3109,7 @@
       mcc="222"
       mnc="50"
       apn="iliad"
-      mmsc="http://mms.iliad-italia.it"
+      mmsc="http://mms.iliad.it"
       type="default,supl,mms"
   />
 
@@ -3929,7 +3927,6 @@
       type="mms"
   />
 
-
   <apn carrier="O2 MOBILE WEB"
       carrier_id = "1492"
       mcc="234"
@@ -4314,7 +4311,7 @@
       protocol="IPV6"
       roaming_protocol="IPV6"
   />
-  
+
   <apn carrier="Internet"
       carrier_id = "2283"
       mcc="234"
@@ -6146,7 +6143,6 @@
       mmsport="8080"
       type="mms"
   />
-
 
   <apn carrier="Kyivstar MMS"
       carrier_id = "1747"
@@ -8836,6 +8832,7 @@
       protocol="IPV4V6"
       bearer_bitmask="4|5|6|7|8|12"
   />
+
   <!-- bearer 4, 5, 6, 7, 8, 12 -->
   <apn carrier="Verizon"
       mcc="310"
@@ -9452,6 +9449,7 @@
       mmsport="80"
       bearer_bitmask="4|5|6|7|8|12"
   />
+
   <!-- bearer 4, 5, 6, 7, 8, 12 -->
   <apn carrier="Sprint"
       carrier_id = "1788"
@@ -9607,7 +9605,6 @@
       roaming_protocol="IPV4V6"
   />
 
-
   <apn carrier="T-Mobile US 160"
       carrier_id = "1"
       mcc="310"
@@ -9667,7 +9664,6 @@
       protocol="IPV4V6"
       roaming_protocol="IPV4V6"
   />
-
 
   <apn carrier="DataConnect"
       carrier_id = "1187"
@@ -10288,7 +10284,6 @@
       mmsc="http://mmsc.truphone.com:1981/mm1"
       type="default,supl,mms,dun"
   />
-
 
   <apn carrier="Truphone"
       carrier_id = "1"
@@ -11574,6 +11569,7 @@
       roaming_protocol="IPV4V6"
       bearer_bitmask="14"
   />
+
   <apn carrier="Web 2"
       carrier_id = "1815"
       mcc="310"
@@ -11889,6 +11885,7 @@
       roaming_protocol="IPV4V6"
       bearer_bitmask="14"
   />
+
   <apn carrier="WOW_WAP"
       carrier_id = "1828"
       mcc="310"
@@ -14421,6 +14418,7 @@
       bearer_bitmask="4|5|6|7|8|12"
       user_visible="false"
   />
+
   <!-- bearer 4, 5, 6, 7, 8, 12 -->
   <apn carrier="Verizon"
       carrier_id = "1839"
@@ -14474,7 +14472,7 @@
       carrier_id = "1839"
       mcc="311"
       mnc="480"
-      apn="VZWIMS"
+      apn="IMS"
       type="ims,ia"
       protocol="IPV4V6"
       roaming_protocol="IPV4V6"
@@ -15502,6 +15500,7 @@
       roaming_protocol="IPV4V6"
       bearer_bitmask="14"
    />
+
   <apn carrier="TelAlaska Cellular"
       carrier_id = "2256"
       mcc="311"
@@ -15523,6 +15522,7 @@
       protocol="IPV4V6"
       bearer_bitmask="6"
   />
+
   <apn carrier="ClearTalk LTE"
       carrier_id = "2257"
       mcc="311"
@@ -16059,7 +16059,6 @@
       type="mms"
   />
 
-
   <apn carrier="Internet"
       carrier_id = "1913"
       mcc="334"
@@ -16070,7 +16069,6 @@
       authtype="1"
       type="default,supl"
   />
-
 
   <apn carrier="Mensajes Multimedia"
       carrier_id = "1913"
@@ -16085,7 +16083,6 @@
       authtype="1"
       type="mms"
   />
-
 
   <apn carrier="Movistar INTERNET"
       carrier_id = "1914"
@@ -17142,7 +17139,6 @@
       type="default,supl"
   />
 
-
   <apn carrier="Cubacel MMS"
       carrier_id = "1444"
       mcc="368"
@@ -17787,8 +17783,14 @@
       carrier_id = "2165"
       mcc="402"
       mnc="77"
-      apn="default"
+      apn="ticlnet"
+      user=""
+      password=""
+      proxy=""
+      port=""
       type="default,supl"
+      protocol="IPV4V6"
+      roaming_protocol="IPV4V6"
   />
 
   <apn carrier="Vodafone live"
@@ -25100,7 +25102,6 @@
       type="default,supl"
   />
 
-
   <apn carrier="Zain JO WAP"
       carrier_id = "1578"
       mcc="416"
@@ -25114,7 +25115,6 @@
       type="default,supl"
   />
 
-
   <apn carrier="Zain JO Streaming"
       carrier_id = "1578"
       mcc="416"
@@ -25125,7 +25125,6 @@
       authtype="1"
       type="default,supl"
   />
-
 
   <apn carrier="Zain JO MMS"
       carrier_id = "1578"
@@ -25140,7 +25139,6 @@
       mmsport="80"
       type="mms"
   />
-
 
   <apn carrier="Umniah internet"
       carrier_id = "1580"
@@ -25160,7 +25158,6 @@
       type="default,supl"
   />
 
-
   <apn carrier="Umniah MMS"
       carrier_id = "1580"
       mcc="416"
@@ -25172,7 +25169,6 @@
       type="mms"
   />
 
-
   <apn carrier="Orange MMS"
       carrier_id = "849"
       mcc="416"
@@ -25248,7 +25244,6 @@
       port="8080"
       type="default,supl"
   />
-
 
   <apn carrier="Syriatel Net"
       carrier_id = "1088"
@@ -25671,7 +25666,6 @@
       type="mms"
   />
 
-
   <apn carrier="Oman Mobile Internet"
       carrier_id = "970"
       mcc="422"
@@ -25697,7 +25691,6 @@
       type="mms"
   />
 
-
   <apn carrier="Nawras Internet"
       carrier_id = "971"
       mcc="422"
@@ -25708,7 +25701,6 @@
       authtype="1"
       type="default,supl"
   />
-
 
   <apn carrier="Etisalat Data Package"
       carrier_id = "451"
@@ -26026,7 +26018,6 @@
       port="80"
       type="default,supl"
   />
-
 
   <apn carrier="Zain BH MMS"
       carrier_id = "2014"
@@ -29145,35 +29136,39 @@
   />
 
   <apn carrier="Default"
+      carrier_id = "2105"
       mcc="530"
       mnc="05"
       apn="wapaccess.co.nz"
       type="default,supl"
-      mvno_match_data="53005204"
-      mvno_type="imsi"
+      mvno_match_data="Skinny"
+      mvno_type="spn"
   />
 
   <apn carrier="Content"
+      carrier_id = "2105"
       mcc="530"
       mnc="05"
       apn="wapaccess.co.nz"
       proxy="210.55.11.73"
       port="80"
       type="default,supl"
-      mvno_match_data="53005204"
-      mvno_type="imsi"
+      mvno_match_data="Skinny"
+      mvno_type="spn"
   />
 
   <apn carrier="Data"
+      carrier_id = "2105"
       mcc="530"
       mnc="05"
       apn="wapaccess.co.nz"
       type="default,supl"
-      mvno_match_data="53005204"
-      mvno_type="imsi"
+      mvno_match_data="Skinny"
+      mvno_type="spn"
   />
 
   <apn carrier="MMS"
+      carrier_id = "2105"
       mcc="530"
       mnc="05"
       apn="wapaccess.co.nz"
@@ -29181,8 +29176,8 @@
       mmsproxy="210.55.11.73"
       mmsport="80"
       type="mms"
-      mvno_match_data="53005204"
-      mvno_type="imsi"
+      mvno_match_data="Skinny"
+      mvno_type="spn"
   />
 
   <apn carrier="2Degrees Internet"
@@ -31037,7 +31032,6 @@
       type="mms"
   />
 
-
   <apn carrier="Airtel Internet"
       carrier_id = "866"
       mcc="639"
@@ -32012,7 +32006,6 @@
       type="default,supl"
   />
 
-
   <apn carrier="Enitel MMS"
       carrier_id = "1641"
       mcc="710"
@@ -32088,7 +32081,6 @@
       type="default,supl"
   />
 
-
   <apn carrier="Enitel MMS"
       carrier_id = "1642"
       mcc="710"
@@ -32113,7 +32105,6 @@
       authtype="1"
       type="default,supl"
   />
-
 
   <apn carrier="Enitel MMS"
       carrier_id = "1642"
@@ -34405,6 +34396,7 @@
       password=""
       type="default,supl"
   />
+
   <apn carrier="Sberbank-Telecom MMS"
       carrier_id = "2251"
       mcc="250"
@@ -34417,6 +34409,7 @@
       mmsport="8080"
       type="mms"
   />
+
   <apn carrier="Sberbank-Telecom IMS"
       carrier_id = "2251"
       mcc="250"
@@ -34691,5 +34684,4 @@
       mmsport="9028"
       type="mms"
   />
-
 </apns>
