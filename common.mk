@@ -387,10 +387,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml
 
-# Pocketmode
-PRODUCT_PACKAGES += \
-    OneplusPocketMode
-
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power@1.2-service.msm8998-libperfmgr
