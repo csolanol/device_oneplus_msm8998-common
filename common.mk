@@ -106,8 +106,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/common/etc/sysconfig/pixel_2016_exclusive.xml:system/etc/sysconfig/pixel_2016_exclusive.xml \
     $(LOCAL_PATH)/prebuilt/common/etc/sysconfig/pixel_2017_exclusive.xml:system/etc/sysconfig/pixel_2017_exclusive.xml \
     $(LOCAL_PATH)/prebuilt/common/etc/sysconfig/pixel_2018_exclusive.xml:system/etc/sysconfig/pixel_2018_exclusive.xml \
+    $(LOCAL_PATH)/prebuilt/common/etc/sysconfig/pixel_2019_midyear_exclusive.xml:system/etc/sysconfig/pixel_2019_midyear_exclusive.xml \
     $(LOCAL_PATH)/prebuilt/common/etc/sysconfig/pixel_experience_2017.xml:system/etc/sysconfig/pixel_experience_2017.xml \
     $(LOCAL_PATH)/prebuilt/common/etc/sysconfig/pixel_experience_2018.xml:system/etc/sysconfig/pixel_experience_2018.xml \
+    $(LOCAL_PATH)/prebuilt/common/etc/sysconfig/pixel_experience_2019_midyear.xml:system/etc/sysconfig/pixel_experience_2019_midyear.xml \
     $(LOCAL_PATH)/prebuilt/common/etc/sysconfig/wellbeing-hiddenapi-package-whitelist.xml:system/etc/sysconfig/wellbeing-hiddenapi-package-whitelist.xml
 
 # Google extra libraries (sketch/swipe)
