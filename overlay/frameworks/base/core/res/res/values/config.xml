@@ -689,33 +689,4 @@
 
     <!-- True if the firmware supports Wi-Fi link probing -->
     <bool name="config_wifi_link_probing_supported">true</bool>
-
-    <!-- Default state for LiveDisplay -->
-    <bool name="config_liveDisplayAvailable">true</bool>
-
-   <!-- Use default display mode -->
-    <integer name="config_defaultLiveDisplayMode">0</integer>
-
-   <!-- Display mode remapping table.
-        If the mode names returned by the backend do not match
-        the predefined and translated strings in the Settings
-        app, they can be remapped here. The format is
-        "oldname:newname", one per entry. -->
-   <string-array name="config_displayModeMappings" translatable="false">
-       <item>default:standard</item>
-       <item>xianyan:dynamic</item>
-       <item>ziran:photography</item>
-       <item>rouhe:basic</item>
-       <item>movie:cinema</item>
-   </string-array>
-
-   <!-- Should we filter any display modes which are unampped? -->
-   <bool name="config_filterDisplayModes">true</bool>
-
-   <!-- Defines the sysfs attribute path used by pocket bridge
-   to communicate pocket state to the pocket judge kernel driver. -->
-   <string name="config_pocketBridgeSysfsInpocket">/sys/kernel/pocket_judge/inpocket</string>
-
-   <!-- Whether to enable oneplus cam hack -->
-   <bool name="config_enableOPcamhack">true</bool>
 </resources>
