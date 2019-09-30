@@ -187,8 +187,7 @@ PRODUCT_PACKAGES += \
     libtinyxml \
     libqdMetaData \
     libqdMetaData.system \
-    libvulkan \
-    DisplayMode
+    libvulkan
 
 PRODUCT_PACKAGES += \
     vendor.display.config@1.0 \
