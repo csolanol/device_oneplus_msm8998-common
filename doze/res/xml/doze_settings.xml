@@ -20,8 +20,8 @@
         android:key="double_tap"
         android:title="@string/double_tap_title" >
 
-        <com.aicp.gear.preference.SystemSettingSwitchPreference
-            android:key="doze_trigger_doubletap"
+        <com.aicp.gear.preference.SecureSettingSwitchPreference
+            android:key="doze_pulse_on_double_tap"
             android:defaultValue="false"
             android:title="@string/doze_double_tap_title"
             android:summary="@string/doze_double_tap_summary" />
@@ -32,8 +32,8 @@
         android:key="tilt_sensor"
         android:title="@string/tilt_sensor_title">
 
-        <SwitchPreference
-            android:key="gesture_pick_up"
+        <com.aicp.gear.preference.SecureSettingSwitchPreference
+            android:key="doze_tilt_gesture"
             android:defaultValue="false"
             android:title="@string/pick_up_gesture_title"
             android:summary="@string/pick_up_gesture_summary"
@@ -45,15 +45,15 @@
         android:key="proximity_sensor"
         android:title="@string/proximity_sensor_title">
 
-        <SwitchPreference
-            android:key="gesture_hand_wave"
+        <com.aicp.gear.preference.SecureSettingSwitchPreference
+            android:key="doze_handwave_gesture"
             android:defaultValue="false"
             android:title="@string/hand_wave_gesture_title"
             android:summary="@string/hand_wave_gesture_summary"
             android:icon="@drawable/ic_hand"/>
 
-        <SwitchPreference
-            android:key="gesture_pocket"
+        <com.aicp.gear.preference.SecureSettingSwitchPreference
+            android:key="doze_pocket_gesture"
             android:defaultValue="false"
             android:title="@string/pocket_gesture_title"
             android:summary="@string/pocket_gesture_summary"
