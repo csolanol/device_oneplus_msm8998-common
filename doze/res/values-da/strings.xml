@@ -26,7 +26,7 @@
   <string name="pick_up_title">Samle op</string>
   <string name="pick_up_summary">Blink med notifikationerne når enheden tages op</string>
   <!-- Proximity sensor -->
-  <string name="priximity_sensor_title">Berøringssensor</string>
+  <string name="proximity_sensor_title">Berøringssensor</string>
   <string name="hand_wave_gesture_title">Vink med hånden</string>
   <string name="hand_wave_gesture_summary">Vibrér, hvis der er notifikationer, når du vinker over skærmen</string>
   <string name="pocket_gesture_title">Lomme</string>

@@ -22,7 +22,7 @@
   <string name="pick_up_title">Oppakken</string>
   <string name="pick_up_summary">Meldingen laten knipperen bij oppakken</string>
   <!-- Proximity sensor -->
-  <string name="priximity_sensor_title">Nabijheidssensor</string>
+  <string name="proximity_sensor_title">Nabijheidssensor</string>
   <string name="hand_wave_gesture_title">Handgebaar</string>
   <string name="hand_wave_gesture_summary">Meldingen laten knipperen bij handgebaar</string>
   <string name="pocket_gesture_title">Broekzak</string>

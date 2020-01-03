@@ -26,7 +26,7 @@
   <string name="pick_up_title">Nosto</string>
   <string name="pick_up_summary">Väläytä ilmoituksia kun laite nostetaan</string>
   <!-- Proximity sensor -->
-  <string name="priximity_sensor_title">Läheisyysanturi</string>
+  <string name="proximity_sensor_title">Läheisyysanturi</string>
   <string name="hand_wave_gesture_title">Käden heilautus</string>
   <string name="hand_wave_gesture_summary">Näytä ilmoitukset heilautettaessa kättä</string>
   <string name="pocket_gesture_title">Tasku</string>

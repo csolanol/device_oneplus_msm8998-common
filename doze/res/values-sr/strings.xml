@@ -22,7 +22,7 @@
   <string name="pick_up_title">Купљење</string>
   <string name="pick_up_summary">Пулсно обавештење када је уређај покупљен</string>
   <!-- Proximity sensor -->
-  <string name="priximity_sensor_title">Сензор близине</string>
+  <string name="proximity_sensor_title">Сензор близине</string>
   <string name="hand_wave_gesture_title">Покрет руком</string>
   <string name="hand_wave_gesture_summary">Пулсно обавештење при покрету руком</string>
   <string name="pocket_gesture_title">Џеп</string>

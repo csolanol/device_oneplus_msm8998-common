@@ -22,7 +22,7 @@
   <string name="pick_up_title">Kézbevétel</string>
   <string name="pick_up_summary">Villantsa fel az értesítéseket kézbevételkor</string>
   <!-- Proximity sensor -->
-  <string name="priximity_sensor_title">Közelség érzékelő</string>
+  <string name="proximity_sensor_title">Közelség érzékelő</string>
   <string name="hand_wave_gesture_title">Lebegő simítás</string>
   <string name="hand_wave_gesture_summary">Értesítések felvillantása lebegő simításnál</string>
   <string name="pocket_gesture_title">Zseb</string>

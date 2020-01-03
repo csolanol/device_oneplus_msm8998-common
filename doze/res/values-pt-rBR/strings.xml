@@ -22,7 +22,7 @@
   <string name="pick_up_title">Pegar</string>
   <string name="pick_up_summary">Pulsar notificações ao pegar o dispositivo</string>
   <!-- Proximity sensor -->
-  <string name="priximity_sensor_title">Sensor de proximidade</string>
+  <string name="proximity_sensor_title">Sensor de proximidade</string>
   <string name="hand_wave_gesture_title">Acenar com a mão</string>
   <string name="hand_wave_gesture_summary">Pulsar notificações ao acenar com a mão</string>
   <string name="pocket_gesture_title">Bolso</string>

@@ -26,7 +26,7 @@
   <string name="pick_up_title">Dvig</string>
   <string name="pick_up_summary">Utripaj obvestila ob dvigu naprave</string>
   <!-- Proximity sensor -->
-  <string name="priximity_sensor_title">Tipalo bližine</string>
+  <string name="proximity_sensor_title">Tipalo bližine</string>
   <string name="hand_wave_gesture_title">Mahanje z roko</string>
   <string name="hand_wave_gesture_summary">Utripaj obvestila ob mahanju z roko</string>
   <string name="pocket_gesture_title">Žep</string>

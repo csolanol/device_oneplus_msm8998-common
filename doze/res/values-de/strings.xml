@@ -26,7 +26,7 @@
   <string name="pick_up_title">Aufnehmen</string>
   <string name="pick_up_summary">Benachrichtigungen kurz einblenden, wenn das Gerät aufgenommen wird</string>
   <!-- Proximity sensor -->
-  <string name="priximity_sensor_title">Näherungssensor</string>
+  <string name="proximity_sensor_title">Näherungssensor</string>
   <string name="hand_wave_gesture_title">Winken</string>
   <string name="hand_wave_gesture_summary">Beim Winken Benachrichtigungen kurzzeitig einblenden</string>
   <string name="pocket_gesture_title">Tasche</string>

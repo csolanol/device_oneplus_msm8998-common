@@ -22,7 +22,7 @@
   <string name="pick_up_title">הרמה</string>
   <string name="pick_up_summary">הצג התראות כשהמכשיר מורם</string>
   <!-- Proximity sensor -->
-  <string name="priximity_sensor_title">חיישן קרבה</string>
+  <string name="proximity_sensor_title">חיישן קרבה</string>
   <string name="hand_wave_gesture_title">הנפת יד</string>
   <string name="hand_wave_gesture_summary">הדגש התראות בהנפת יד</string>
   <string name="pocket_gesture_title">כיס</string>
