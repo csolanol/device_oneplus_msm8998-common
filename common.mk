@@ -465,10 +465,6 @@ PRODUCT_PACKAGES += \
 # Vendor properties
 -include $(LOCAL_PATH)/vendor_prop.mk
 
-# Vendor security patch level
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.aicp.build.vendor_security_patch=2019-12-01
-
 # Verity
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
 $(call inherit-product, build/target/product/verity.mk)
