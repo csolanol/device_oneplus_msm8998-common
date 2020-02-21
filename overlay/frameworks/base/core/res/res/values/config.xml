@@ -738,8 +738,6 @@
     <integer name="config_sysCPUTempMultiplier">10</integer>
     <integer name="config_sysBatteryTempMultiplier">10</integer>
 
-    <!-- Whether device supports pickupsensor for AD pulse -->
-    <bool name="config_dozePulsePickup">true</bool>
     <!-- Whether device supports wake screen gesture for AD pulse -->
     <bool name="config_dozeWakeLockScreenSensorAvailable">true</bool>
     <!-- Whether device supports sensor based doze customizations -->
