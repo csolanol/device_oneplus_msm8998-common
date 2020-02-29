@@ -333,6 +333,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.rild.nitz_short_ons_1="" \
     persist.rild.nitz_short_ons_2="" \
     persist.rild.nitz_short_ons_3="" \
+    ro.telephony.use_old_mnc_mcc_format=true \
     ro.telephony.iwlan_operation_mode=legacy \
     persist.sys.oem_smooth=1 \
     persist.vendor.ims.dropset_feature=0 \
