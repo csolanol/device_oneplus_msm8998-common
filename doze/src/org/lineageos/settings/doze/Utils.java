@@ -35,6 +35,7 @@ public final class Utils {
     private static final String DOZE_INTENT = "com.android.systemui.doze.pulse";
 
     protected static final String CATEG_PROX_SENSOR = "proximity_sensor";
+    protected static final String CATEG_AMBIENT_LIGHT = "pulse_ambient_light";
 
     protected static final String GESTURE_PICK_UP_KEY = "doze_tilt_gesture";
     protected static final String GESTURE_HAND_WAVE_KEY = "doze_handwave_gesture";
