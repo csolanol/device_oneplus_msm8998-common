@@ -52,7 +52,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String KEY_CATEGORY_GRAPHICS = "graphics";
 
     public static final String KEY_SRGB_SWITCH = "srgb";
-    //public static final String KEY_HBM_SWITCH = "hbm";
+    public static final String KEY_HBM_SWITCH = "hbm";
     public static final String KEY_HWK_SWITCH = "hwk";
     public static final String KEY_PROXI_SWITCH = "proxi";
     public static final String KEY_DCI_SWITCH = "dci";
