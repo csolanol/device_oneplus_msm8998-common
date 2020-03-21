@@ -59,10 +59,10 @@ import android.view.KeyEvent;
 import android.view.HapticFeedbackConstants;
 import android.view.WindowManagerGlobal;
 
-import com.android.internal.util.omni.DeviceKeyHandler;
 import com.android.internal.util.ArrayUtils;
-import com.android.internal.util.omni.OmniUtils;
-import org.omnirom.omnilib.utils.OmniVibe;
+import com.android.internal.util.aicp.DeviceKeyHandler;
+import com.android.internal.util.aicp.AicpUtils;
+import com.android.internal.util.aicp.AicpVibe;
 import com.android.internal.statusbar.IStatusBarService;
 
 public class KeyHandler implements DeviceKeyHandler {
@@ -73,6 +73,8 @@ public class KeyHandler implements DeviceKeyHandler {
 
     protected static final int GESTURE_REQUEST = 1;
     private static final int GESTURE_WAKELOCK_DURATION = 2000;
+    private static final String GESTURE_HAPTIC_SETTINGS_VARIABLE = "OFF_GESTURE_HAPTIC_ENABLE";
+    private static final int GESTURE_HAPTIC_DURATION = 50;
     private static final String KEY_CONTROL_PATH = "/proc/touchpanel/key_disable";
     private static final String FPC_CONTROL_PATH = "/sys/devices/soc/soc:fpc_fpc1020/proximity_state";
     private static final String FPC_KEY_CONTROL_PATH = "/sys/devices/soc/soc:fpc_fpc1020/key_disable";
@@ -248,8 +250,8 @@ public class KeyHandler implements DeviceKeyHandler {
         }
 
         void observe() {
-            mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.OMNI_HARDWARE_KEYS_DISABLE),
+            mContext.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(
+                    Settings.Secure.HARDWARE_KEYS_DISABLE),
                     false, this);
             mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
                     Settings.System.OMNI_DEVICE_PROXI_CHECK_ENABLED),
@@ -354,7 +356,8 @@ public class KeyHandler implements DeviceKeyHandler {
         if (mFPcheck && mDispOn && !TextUtils.isEmpty(value) && !value.equals(AppSelectListPreference.DISABLED_ENTRY)){
             isFpgesture = true;
             if (!launchSpecialActions(value) && !isCameraLaunchEvent(event)) {
-                    OmniVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false, mContext);
+                    AicpVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false,
+                              mContext, GESTURE_HAPTIC_SETTINGS_VARIABLE,GESTURE_HAPTIC_DURATION);
                     Intent intent = createIntent(value);
                     if (DEBUG) Log.i(TAG, "intent = " + intent);
                     mContext.startActivity(intent);
@@ -386,8 +389,8 @@ public class KeyHandler implements DeviceKeyHandler {
     public static void setButtonDisable(Context context) {
         // we should never come here on the 5t but just to be sure
         if (!sIsOnePlus5t) {
-            mButtonDisabled = Settings.System.getIntForUser(
-                    context.getContentResolver(), Settings.System.OMNI_HARDWARE_KEYS_DISABLE, 0,
+            mButtonDisabled = Settings.Secure.getIntForUser(
+                    context.getContentResolver(), Settings.Secure.HARDWARE_KEYS_DISABLE, 0,
                     UserHandle.USER_CURRENT) == 1;
             if (DEBUG) Log.i(TAG, "setButtonDisable=" + mButtonDisabled);
             if(mButtonDisabled) {
@@ -437,7 +440,8 @@ public class KeyHandler implements DeviceKeyHandler {
         if (!TextUtils.isEmpty(value) && !value.equals(AppSelectListPreference.DISABLED_ENTRY)) {
             if (DEBUG) Log.i(TAG, "isActivityLaunchEvent " + event.getScanCode() + value);
             if (!launchSpecialActions(value)) {
-                OmniVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false, mContext);
+                AicpVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false,
+                          mContext, GESTURE_HAPTIC_SETTINGS_VARIABLE,GESTURE_HAPTIC_DURATION);
                 Intent intent = createIntent(value);
                 return intent;
             }
@@ -581,10 +585,13 @@ public class KeyHandler implements DeviceKeyHandler {
                 try {
                     if (mUseSliderTorch) {
                         service.toggleCameraFlashState(mTorchState);
+                        AicpVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false,
+                                  mContext, GESTURE_HAPTIC_SETTINGS_VARIABLE,GESTURE_HAPTIC_DURATION);
                         return true;
                     } else {
                         service.toggleCameraFlash();
-                        OmniVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false, mContext);
+                        AicpVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false,
+                                  mContext, GESTURE_HAPTIC_SETTINGS_VARIABLE,GESTURE_HAPTIC_DURATION);
                         return true;
                     }
                 } catch (RemoteException e) {
@@ -593,50 +600,60 @@ public class KeyHandler implements DeviceKeyHandler {
            }
         } else if (value.equals(AppSelectListPreference.MUSIC_PLAY_ENTRY)) {
             mGestureWakeLock.acquire(GESTURE_WAKELOCK_DURATION);
-            OmniVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false, mContext);
+            AicpVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false,
+                      mContext, GESTURE_HAPTIC_SETTINGS_VARIABLE,GESTURE_HAPTIC_DURATION);
             dispatchMediaKeyWithWakeLockToAudioService(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
             return true;
         } else if (value.equals(AppSelectListPreference.MUSIC_NEXT_ENTRY)) {
             if (isMusicActive()) {
                 mGestureWakeLock.acquire(GESTURE_WAKELOCK_DURATION);
-                OmniVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false, mContext);
+                AicpVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false,
+                          mContext, GESTURE_HAPTIC_SETTINGS_VARIABLE,GESTURE_HAPTIC_DURATION);
                 dispatchMediaKeyWithWakeLockToAudioService(KeyEvent.KEYCODE_MEDIA_NEXT);
             }
             return true;
         } else if (value.equals(AppSelectListPreference.MUSIC_PREV_ENTRY)) {
             if (isMusicActive()) {
                 mGestureWakeLock.acquire(GESTURE_WAKELOCK_DURATION);
-                OmniVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false, mContext);
+                AicpVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false,
+                          mContext, GESTURE_HAPTIC_SETTINGS_VARIABLE,GESTURE_HAPTIC_DURATION);
                 dispatchMediaKeyWithWakeLockToAudioService(KeyEvent.KEYCODE_MEDIA_PREVIOUS);
             }
             return true;
         } else if (value.equals(AppSelectListPreference.VOLUME_UP_ENTRY)) {
-            OmniVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false, mContext);
+            AicpVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false,
+                      mContext, GESTURE_HAPTIC_SETTINGS_VARIABLE,GESTURE_HAPTIC_DURATION);
             mAudioManager.adjustSuggestedStreamVolume(AudioManager.ADJUST_RAISE,AudioManager.USE_DEFAULT_STREAM_TYPE,AudioManager.FLAG_SHOW_UI);
             return true;
         } else if (value.equals(AppSelectListPreference.VOLUME_DOWN_ENTRY)) {
-            OmniVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false, mContext);
+            AicpVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false,
+                      mContext, GESTURE_HAPTIC_SETTINGS_VARIABLE,GESTURE_HAPTIC_DURATION);
             mAudioManager.adjustSuggestedStreamVolume(AudioManager.ADJUST_LOWER,AudioManager.USE_DEFAULT_STREAM_TYPE,AudioManager.FLAG_SHOW_UI);
             return true;
         } else if (value.equals(AppSelectListPreference.BROWSE_SCROLL_DOWN_ENTRY)) {
-            OmniVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false, mContext);
-            OmniUtils.sendKeycode(KeyEvent.KEYCODE_PAGE_DOWN);
+            AicpVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false,
+                      mContext, GESTURE_HAPTIC_SETTINGS_VARIABLE,GESTURE_HAPTIC_DURATION);
+            AicpUtils.sendKeycode(KeyEvent.KEYCODE_PAGE_DOWN);
             return true;
         } else if (value.equals(AppSelectListPreference.BROWSE_SCROLL_UP_ENTRY)) {
-            OmniVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false, mContext);
-            OmniUtils.sendKeycode(KeyEvent.KEYCODE_PAGE_UP);
+            AicpVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false,
+                      mContext, GESTURE_HAPTIC_SETTINGS_VARIABLE,GESTURE_HAPTIC_DURATION);
+            AicpUtils.sendKeycode(KeyEvent.KEYCODE_PAGE_UP);
             return true;
         } else if (value.equals(AppSelectListPreference.NAVIGATE_BACK_ENTRY)) {
-            OmniVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false, mContext);
-            OmniUtils.sendKeycode(KeyEvent.KEYCODE_BACK);
+            AicpVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false,
+                      mContext, GESTURE_HAPTIC_SETTINGS_VARIABLE,GESTURE_HAPTIC_DURATION);
+            AicpUtils.sendKeycode(KeyEvent.KEYCODE_BACK);
             return true;
         } else if (value.equals(AppSelectListPreference.NAVIGATE_HOME_ENTRY)) {
-            OmniVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false, mContext);
-            OmniUtils.sendKeycode(KeyEvent.KEYCODE_HOME);
+            AicpVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false,
+                      mContext, GESTURE_HAPTIC_SETTINGS_VARIABLE,GESTURE_HAPTIC_DURATION);
+            AicpUtils.sendKeycode(KeyEvent.KEYCODE_HOME);
             return true;
         } else if (value.equals(AppSelectListPreference.NAVIGATE_RECENT_ENTRY)) {
-            OmniVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false, mContext);
-            OmniUtils.sendKeycode(KeyEvent.KEYCODE_APP_SWITCH);
+            AicpVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false,
+                      mContext, GESTURE_HAPTIC_SETTINGS_VARIABLE,GESTURE_HAPTIC_DURATION);
+            AicpUtils.sendKeycode(KeyEvent.KEYCODE_APP_SWITCH);
             return true;
         }
         return false;
@@ -762,15 +779,15 @@ public class KeyHandler implements DeviceKeyHandler {
                 UserHandle.USER_CURRENT) == 1;
         int owningUid;
         String owningPackage;
-        
+
         owningUid = android.os.Process.myUid();
         owningPackage = mContext.getOpPackageName();
         VibrationEffect effect = VibrationEffect.get(VibrationEffect.EFFECT_HEAVY_CLICK);
         //mVibrator.vibrate(owningUid, owningPackage, effect, VIBRATION_ATTRIBUTES);
         //OmniVibe.performHapticFeedback(owningUid, owningPackage, effect, VIBRATION_ATTRIBUTES);
-        
+
         //OmniVibe mOmniVibe = new OmniVibe();
         OmniVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false, mContext);
     }*/
-    
+
 }

@@ -30,8 +30,8 @@
         android:summary="@string/doze_category_summary"
         android:persistent="false" >
         <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="org.omnirom.device"
-                android:targetClass="org.omnirom.device.DozeSettingsActivity" />
+                android:targetPackage="org.lineageos.settings.doze"
+                android:targetClass="org.lineageos.settings.doze.DozeSettingsActivity" />
     </Preference>
 
     <PreferenceCategory

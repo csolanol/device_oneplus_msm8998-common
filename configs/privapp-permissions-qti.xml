@@ -94,4 +94,8 @@ It allows additional grants on top of privapp-permissions-platform.xml
     <privapp-permissions package="com.qualcomm.location">
         <permission name="android.permission.MANAGE_USERS"/>
     </privapp-permissions>
+
+    <privapp-permissions package="org.omni.device.DeviceParts">
+        <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+    </privapp-permissions>
 </permissions>

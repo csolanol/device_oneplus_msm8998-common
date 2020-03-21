@@ -680,15 +680,11 @@
     <!-- Smart Pixels -->
     <bool name="config_enableSmartPixels">true</bool>
 
-    <!-- Paths to the libraries that contain device specific key handlers -->
-    <string-array name="config_deviceKeyHandlerLibs" translatable="false">
-        <item>/system/app/DeviceHandler/DeviceHandler.apk</item>
-    </string-array>
+    <!-- Path to the library that contain device specific key handler -->
+    <string name="config_deviceKeyHandlerLib" translatable="false">/system/priv-app/DeviceParts/DeviceParts.apk</string>
 
-    <!-- Names of the key handler classes -->
-    <string-array name="config_deviceKeyHandlerClasses" translatable="false">
-        <item>com.slim.device.KeyHandler</item>
-    </string-array>
+    <!-- Name of the key handler class -->
+    <string name="config_deviceKeyHandlerClass" translatable="false">org.omnirom.device.KeyHandler</string>
 
     <!-- Enable all rotations -->
     <bool name="config_allowAllRotations">false</bool>

@@ -14,6 +14,8 @@
      limitations under the License.
 -->
 <resources>
+    <string name="device_title">OnePlus Settings</string>
+    <string name="device_summary">Adjust OnePlus specific device settings</string>
     <string name="app_name">Oneplus 5</string>
     <string name="category_gestures_title">Device gestures</string>
     <string name="fp_gesture_title">Fingerprint scanner gestures</string>
