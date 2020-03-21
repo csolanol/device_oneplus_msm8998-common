@@ -749,5 +749,5 @@
     <integer name="config_alertSliderLocation">0</integer>
 
     <!-- Whether key handler sends intent when changing slider position -->
-    <string name="config_alertSliderIntent">com.slim.device.UPDATE_SLIDER_POSITION</string>
+    <string name="config_alertSliderIntent">org.omnirom.device.UPDATE_SLIDER_POSITION</string>
 </resources>

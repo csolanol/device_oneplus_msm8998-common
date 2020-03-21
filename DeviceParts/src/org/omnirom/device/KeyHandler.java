@@ -19,6 +19,8 @@ package org.omnirom.device;
 
 import static android.provider.Settings.Global.ZEN_MODE_OFF;
 import static android.provider.Settings.Global.ZEN_MODE_IMPORTANT_INTERRUPTIONS;
+import static android.provider.Settings.Global.ZEN_MODE_ALARMS;
+import static android.provider.Settings.Global.ZEN_MODE_NO_INTERRUPTIONS;
 
 import android.app.ActivityManagerNative;
 import android.app.NotificationManager;
@@ -37,6 +39,7 @@ import android.media.AudioManager;
 import android.media.session.MediaSessionLegacyHelper;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.PowerManager;
@@ -80,6 +83,11 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final String FPC_KEY_CONTROL_PATH = "/sys/devices/soc/soc:fpc_fpc1020/key_disable";
     private static final String GOODIX_CONTROL_PATH = "/sys/devices/soc/soc:goodix_fp/proximity_state";
 
+    public static final String ACTION_UPDATE_SLIDER_POSITION
+            = "org.omnirom.device.UPDATE_SLIDER_POSITION";
+    public static final String EXTRA_SLIDER_POSITION = "position";
+    public static final String EXTRA_SLIDER_POSITION_VALUE = "position_value";
+
     private static final int GESTURE_CIRCLE_SCANCODE = 250;
     private static final int GESTURE_V_SCANCODE = 255;
     private static final int GESTURE_II_SCANCODE = 251;
@@ -109,6 +117,16 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int FP_GESTURE_SWIPE_RIGHT = 106;
     private static final int FP_GESTURE_LONG_PRESS = 305;
     private static final boolean sIsOnePlus5t = android.os.Build.DEVICE.equals("OnePlus5T");
+
+    // TriStateUI Modes
+    public static final int MODE_TOTAL_SILENCE = 600;
+    public static final int MODE_ALARMS_ONLY = 601;
+    public static final int MODE_PRIORITY_ONLY = 602;
+    public static final int MODE_NONE = 603;
+    public static final int MODE_VIBRATE = 604;
+    public static final int MODE_RING = 605;
+    // AICP additions: arbitrary value which hopefully doesn't conflict with upstream anytime soon
+    public static final int MODE_SILENT = 620;
 
     private static final int[] sSupportedGestures5t = new int[]{
         GESTURE_II_SCANCODE,
@@ -332,19 +350,20 @@ public class KeyHandler implements DeviceKeyHandler {
         isFpgesture = false;
         boolean isKeySupported = ArrayUtils.contains(sHandledGestures, event.getScanCode());
         if (isKeySupported) {
-            if (DEBUG) Log.i(TAG, "scanCode=" + event.getScanCode());
-            switch(event.getScanCode()) {
+            int scanCode = event.getScanCode();
+            if (DEBUG) Log.i(TAG, "scanCode=" + scanCode);
+            int position = scanCode == KEY_SLIDER_TOP ? 0 :
+                    scanCode == KEY_SLIDER_CENTER ? 1 : 2;
+            doHandleSliderAction(position);
+            switch(scanCode) {
                 case KEY_SLIDER_TOP:
                     if (DEBUG) Log.i(TAG, "KEY_SLIDER_TOP");
-                    doHandleSliderAction(0);
                     return true;
                 case KEY_SLIDER_CENTER:
                     if (DEBUG) Log.i(TAG, "KEY_SLIDER_CENTER");
-                    doHandleSliderAction(1);
                     return true;
                 case KEY_SLIDER_BOTTOM:
                     if (DEBUG) Log.i(TAG, "KEY_SLIDER_BOTTOM");
-                    doHandleSliderAction(2);
                     return true;
             }
         }
@@ -536,35 +555,65 @@ public class KeyHandler implements DeviceKeyHandler {
 
     private void doHandleSliderAction(int position) {
         int action = getSliderAction(position);
-        if ( action == 0) {
+        int positionValue = 0;
+        if (action == 0) {
             mNoMan.setZenMode(ZEN_MODE_OFF, null, TAG);
             mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_NORMAL);
             mTorchState = false;
+            positionValue = MODE_RING;
         } else if (action == 1) {
             mNoMan.setZenMode(ZEN_MODE_OFF, null, TAG);
             mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_VIBRATE);
             mTorchState = false;
+            positionValue = MODE_VIBRATE;
         } else if (action == 2) {
             mNoMan.setZenMode(ZEN_MODE_OFF, null, TAG);
             mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_SILENT);
             mTorchState = false;
+            positionValue = MODE_SILENT;
         } else if (action == 3) {
             mNoMan.setZenMode(ZEN_MODE_IMPORTANT_INTERRUPTIONS, null, TAG);
             mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_NORMAL);
             mTorchState = false;
+            positionValue = MODE_PRIORITY_ONLY;
         } else if (action == 4) {
+            mNoMan.setZenMode(ZEN_MODE_ALARMS, null, TAG);
+            mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_NORMAL);
+            mTorchState = false;
+            positionValue = MODE_ALARMS_ONLY;
+        } else if (action == 5) {
+            mNoMan.setZenMode(ZEN_MODE_NO_INTERRUPTIONS, null, TAG);
+            mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_NORMAL);
+            mTorchState = false;
+            positionValue = MODE_TOTAL_SILENCE;
+        } else if (action == 6) {
             mNoMan.setZenMode(ZEN_MODE_OFF, null, TAG);
             mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_NORMAL);
+            positionValue = MODE_RING;
             mUseSliderTorch = true;
             mTorchState = true;
         }
-
+        if (positionValue != 0) {
+            sendUpdateBroadcast(position, positionValue);
+        }
         if (((!mProxyIsNear && mUseProxiCheck) || !mUseProxiCheck) && mUseSliderTorch && action < 4) {
             launchSpecialActions(AppSelectListPreference.TORCH_ENTRY);
             mUseSliderTorch = false;
         } else if (((!mProxyIsNear && mUseProxiCheck) || !mUseProxiCheck) && mUseSliderTorch) {
             launchSpecialActions(AppSelectListPreference.TORCH_ENTRY);
         }
+    }
+
+    private void sendUpdateBroadcast(int position, int position_value) {
+        Bundle extras = new Bundle();
+        Intent intent = new Intent(ACTION_UPDATE_SLIDER_POSITION);
+        extras.putInt(EXTRA_SLIDER_POSITION, position);
+        extras.putInt(EXTRA_SLIDER_POSITION_VALUE, position_value);
+        intent.putExtras(extras);
+        mContext.sendBroadcastAsUser(intent, UserHandle.CURRENT);
+        intent.setFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
+        Log.d(TAG, "slider change to positon " + position
+                            + " with value " + position_value);
     }
 
     private Intent createIntent(String value) {
