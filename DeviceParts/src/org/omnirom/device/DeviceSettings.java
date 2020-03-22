@@ -101,12 +101,13 @@ public class DeviceSettings extends PreferenceFragment implements
         mSliderModeBottom.setValueIndex(valueIndex);
         mSliderModeBottom.setSummary(mSliderModeBottom.getEntries()[valueIndex]);
 
+        PreferenceCategory buttonsCategory = (PreferenceCategory) findPreference(KEY_BUTTON_CATEGORY);
         mHWKSwitch = (TwoStatePreference) findPreference(KEY_HWK_SWITCH);
-        if (!sIsOnePlus5t) {
-            mHWKSwitch.setEnabled(HWKSwitch.isSupported());
+        if (HWKSwitch.isSupported()){
+            mHWKSwitch.setEnabled(true);
             mHWKSwitch.setOnPreferenceChangeListener(new HWKSwitch());
         } else {
-            mHWKSwitch.setVisible(false);
+            buttonsCategory.getParent().removePreference(buttonsCategory);
         }
     }
 
