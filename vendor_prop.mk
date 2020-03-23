@@ -54,7 +54,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.hac.enable=false \
     persist.vendor.audio.ras.enabled=false \
     persist.vendor.audio.hw.binder.size_kbyte=1024 \
-    persist.vendor.bt.a2dp_offload_cap=false \
     persist.vendor.bt.enable.splita2dp=false \
     persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxhd-ldac-aac \
     ro.af.client_heap_size_kbyte=7168 \
@@ -141,14 +140,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     bt.max.hfpclient.connections=1 \
-		persist.bluetooth.a2dp_offload.cap=false \
-    persist.btstack.a2dp_offload_cap=sbc-aptx-aptxhd-ldac-aac \
+    persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac \
+    persist.bluetooth.a2dp_offload.disabled=false \
     persist.bt.a2dp.aac_disable=true \
     persist.vendor.btstack.enable.splita2dp=false \
-    vendor.qcom.bluetooth.soc=cherokee \
     persist.vendor.bluetooth.a4wp=false \
+    persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxhd-aac-ldac \
+    ro.bluetooth.a2dp_offload.supported=true \
     vendor.bluetooth.emb_wp_mode=false \
-    vendor.bluetooth.wipower=false
+    vendor.bluetooth.wipower=false \
+    vendor.qcom.bluetooth.soc=cherokee
 
 # Cabl
 PRODUCT_PROPERTY_OVERRIDES += \
