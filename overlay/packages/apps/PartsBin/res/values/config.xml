@@ -14,15 +14,12 @@
      limitations under the License.
 -->
 
-<!-- DeviceParts app resources that may need to be customized
+<!-- PartsBin app resources that may need to be customized
      for different hardware or product builds. -->
 <resources>
 
-    <!-- Whether device supports disabling hwkeys. Leave empty for not supported -->
-    <string name="pathHWKToggle"></string>
-
     <!-- Path to devices High Brigness Mode toggle file -->
-    <string name="pathHBMToggle">/sys/devices/virtual/graphics/fb0/hbm</string>
+    <string name="pathHBMModeToggle">/sys/devices/virtual/graphics/fb0/hbm</string>
 
     <!-- Path to devices NightMode toggle file -->
     <string name="pathNightModeToggle">/sys/devices/virtual/graphics/fb0/night_mode</string>
@@ -30,13 +27,15 @@
     <!-- Path to devices SRGBMode toggle file -->
     <string name="pathSRGBModeToggle">/sys/devices/virtual/graphics/fb0/SRGB</string>
 
-    <!-- Path to devices SRGBMode toggle file -->
+    <!-- Path to devices DCI-P3 toggle file -->
     <string name="pathDCIModeToggle">/sys/devices/virtual/graphics/fb0/DCI_P3</string>
 
-    <!-- Whether device allow changing vibrationlevels -->
-    <string name="pathVibStrength">/sys/devices/virtual/timed_output/vibrator/vtg_level</string>
-    <integer name="hapticVibMinMV">116</integer>
-    <integer name="hapticVibMaxMV">3596</integer>
-    <integer name="hapticVibDefaultMV">2700</integer>
+    <!-- Path to devices OnePlus mode toggle file -->
+    <string name="pathOnePlusModeToggle">/sys/devices/virtual/graphics/fb0/oneplus_mode</string>
 
+    <!-- Whether device allow changing vibrationlevels -->
+    <string name="pathSystemVibStrength">/sys/devices/virtual/timed_output/vibrator/vtg_level</string>
+    <integer name="vibratorMinMV">116</integer>
+    <integer name="vibratorMaxMV">3596</integer>
+    <integer name="vibratorDefaultMV">2700</integer>
 </resources>

@@ -98,4 +98,8 @@ It allows additional grants on top of privapp-permissions-platform.xml
     <privapp-permissions package="org.omnirom.device">
         <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
     </privapp-permissions>
+
+    <privapp-permissions package="com.aicp.device">
+        <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+    </privapp-permissions>
 </permissions>

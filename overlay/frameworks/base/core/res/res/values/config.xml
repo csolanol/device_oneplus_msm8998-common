@@ -681,10 +681,10 @@
     <bool name="config_enableSmartPixels">true</bool>
 
     <!-- Path to the library that contain device specific key handler -->
-    <string name="config_deviceKeyHandlerLib" translatable="false">/system/priv-app/OnePlusParts/OnePlusParts.apk</string>
+    <string name="config_customKeyHandlerLib" translatable="false">/system/priv-app/PartsBin/PartsBin.apk</string>
 
     <!-- Name of the key handler class -->
-    <string name="config_deviceKeyHandlerClass" translatable="false">org.omnirom.device.KeyHandler</string>
+    <string name="config_customKeyHandlerClass" translatable="false">com.aicp.device.KeyHandler</string>
 
     <!-- Enable all rotations -->
     <bool name="config_allowAllRotations">false</bool>
@@ -749,5 +749,5 @@
     <integer name="config_alertSliderLocation">0</integer>
 
     <!-- Whether key handler sends intent when changing slider position -->
-    <string name="config_alertSliderIntent">org.omnirom.device.UPDATE_SLIDER_POSITION</string>
+    <string name="config_alertSliderIntent">com.aicp.device.UPDATE_SLIDER_POSITION</string>
 </resources>
