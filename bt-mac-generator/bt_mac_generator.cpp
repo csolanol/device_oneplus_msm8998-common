@@ -185,6 +185,12 @@ void get_mac_from_nv() {
         fclose(fd);
     }
     update_bt_mac(buf, random);
+
+    if (stat(BDADDR_PATH, &st) == 0) {
+        chmod(BDADDR_PATH, S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP|S_IROTH);
+        property_set("ro.vendor.bt.bdaddr_path", BDADDR_PATH);
+        property_set("persist.vendor.service.bdroid.bdaddr", BDADDR_PATH);
+    }
 }
 
 int main()
