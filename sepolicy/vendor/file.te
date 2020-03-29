@@ -10,3 +10,4 @@ type debugfs_power_stats, fs_type, debugfs_type;
 type nv_data_file, file_type, data_file_type;
 type sysfs_inpocket, fs_type, sysfs_type;
 type sysfs_device_info, fs_type, sysfs_type;
+type sysfs_fastcharge, fs_type, sysfs_type;

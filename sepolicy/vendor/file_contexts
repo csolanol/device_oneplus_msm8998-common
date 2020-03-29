@@ -70,6 +70,8 @@
 
 /sys/kernel/pocket_judge/inpocket                               u:object_r:sysfs_inpocket:s0
 
+/sys/kernel/fast_charge/force_fast_charge                       u:object_r:sysfs_fastcharge:s0
+
 /sys/class/thermal/thermal_zone0/temp                           u:object_r:sysfs_device_info:s0
 /sys/class/power_supply/battery/temp                            u:object_r:sysfs_device_info:s0
 /sys/kernel/gpu/gpu_clock                                       u:object_r:sysfs_device_info:s0
