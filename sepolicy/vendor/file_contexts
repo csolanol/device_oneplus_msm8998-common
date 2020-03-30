@@ -72,11 +72,6 @@
 
 /sys/kernel/fast_charge/force_fast_charge                       u:object_r:sysfs_fastcharge:s0
 
-/sys/class/thermal/thermal_zone0/temp                           u:object_r:sysfs_device_info:s0
-/sys/class/power_supply/battery/temp                            u:object_r:sysfs_device_info:s0
-/sys/kernel/gpu/gpu_clock                                       u:object_r:sysfs_device_info:s0
-/sys/kernel/gpu/gpu_busy                                        u:object_r:sysfs_device_info:s0
-
 # Power supply
 /sys/devices/soc/.*ssusb/power_supply/usb(/.*)?                 u:object_r:sysfs_usb_supply:s0
 /sys/devices/soc/800f000.qcom,spmi/spmi-0/spmi0-02/800f000.qcom,spmi:qcom,pmi8998@2:qcom,qpnp-smb2/power_supply/main(/.*)?       u:object_r:sysfs_usb_supply:s0
@@ -88,6 +83,10 @@
 # Power HAL
 /vendor/bin/hw/android\.hardware\.power@1\.2-service.msm8998-libperfmgr u:object_r:hal_power_default_exec:s0
 /sys/devices/soc/c179000\.i2c/i2c-5/5-[0-9a-f]+/input/input[0-9]+/double_tap_enable u:object_r:sysfs_touchpanel:s0
+
+# QuickSettings SystemInfo
+/sys/class/thermal/thermal_zone0/temp                           u:object_r:sysfs_device_info:s0
+/sys/class/power_supply/battery/temp                            u:object_r:sysfs_device_info:s0
 
 # Wifi
 /(vendor|system/vendor)/bin/wifi-mac-generator                  u:object_r:wifi_mac_generator_exec:s0
