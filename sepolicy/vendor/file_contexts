@@ -70,6 +70,7 @@
 
 /sys/kernel/pocket_judge/inpocket                               u:object_r:sysfs_inpocket:s0
 
+# PartsBin
 /sys/kernel/fast_charge/force_fast_charge                       u:object_r:sysfs_fastcharge:s0
 
 # Power supply

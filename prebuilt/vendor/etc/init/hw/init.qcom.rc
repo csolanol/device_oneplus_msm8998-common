@@ -224,9 +224,6 @@ on boot
     chown system system /sys/class/sensors/apds9930-proximity/enable
     chown system system /sys/class/sensors/apds9930-proximity/poll_delay
 
-    chown system system /sys/kernel/fast_charge/force_fast_charge
-    chmod 0664 /sys/kernel/fast_charge/force_fast_charge
-
     # System Info
     chown system system /sys/class/power_supply/battery/temp
     chmod 0644 /sys/class/power_supply/battery/temp

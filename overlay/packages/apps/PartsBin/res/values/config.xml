@@ -42,4 +42,27 @@
     <integer name="vibratorMaxMV">3596</integer>
     <integer name="vibratorDefaultMV">2700</integer>
 
+    <!-- Device earpiece gain sysfs -->
+    <string name="pathAudioEarpieceGain">/sys/kernel/sound_control/earpiece_gain</string>
+
+    <!-- Device earpiece gain min-max-default values -->
+    <integer name="audioEarpieceMin">-10</integer>
+    <integer name="audioEarpieceMax">20</integer>
+    <integer name="audioEarpieceDefault">0</integer>
+
+    <!-- Device audio mic gain sysfs -->
+    <string name="pathAudioMicGain">/sys/kernel/sound_control/mic_gain</string>
+
+    <!-- Device audio mic min-max-default values -->
+    <integer name="audioMicGainMin">-10</integer>
+    <integer name="audioMicGainMax">20</integer>
+    <integer name="audioMicGainDefault">0</integer>
+
+    <!-- Device audio headphone gain sysfs -->
+    <string name="pathAudioHeadphoneGain">/sys/kernel/sound_control/headphone_gain</string>
+
+    <!-- Device audio headphone min-max-default values -->
+    <integer name="audioHeadphoneGainMin">-84</integer>
+    <integer name="audioHeadphoneGainMax">20</integer>
+    <integer name="audioHeadphoneGainDefault">0</integer>
 </resources>
