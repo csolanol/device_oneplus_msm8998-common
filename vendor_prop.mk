@@ -444,6 +444,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.dbg.vt_avail_ovr=1 \
     persist.dbg.wfc_avail_ovr=1
 
+# Vendor
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.qti.va_aosp.support=1
+
 # VoLTE
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.ims.dropset_feature=0 \
