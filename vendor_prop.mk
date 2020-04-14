@@ -39,7 +39,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.min.duration.secs=30 \
     persist.dirac.acs.controller=qem \
     ro.dirac.acs.storeSettings=1 \
-    ro.dirac.ignore_error=1 \
+    ro.dirac.acs.ignore_error=1 \
     tunnel.audio.encode=true \
     nxpWechatDebugEnable=1 \
     persist.vendor.audio_hal.dsp_bit_width_enforce_mode=24 \
@@ -147,6 +147,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
     ro.vendor.bluetooth.wipower=false \
     vendor.bluetooth.emb_wp_mode=false \
+    vendor.hw.fm.init=0 \
     vendor.qcom.bluetooth.soc=cherokee
 
 # Cabl
@@ -264,13 +265,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.mm.enable.qcom_parser=67092479 \
     vendor.vidc.enc.disable.pq=true
 
+# Network
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.netmon.linger=5000
+
 # NFC
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.camera.notify_nfc=1 \
     ro.hardware.nfc_nci=nqx.default \
     ro.nfc.port=I2C \
     persist.nfc.smartcard.config=SIM1,eSE1 \
-    ro.boot.product.hardware.sku=ese
+    ro.boot.product.hardware.sku=ese \
+    persist.vendor.nfc.delayese=true
 
 # OTG support
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -347,6 +353,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.ims.dropset_feature=0 \
     persist.vendor.qti.telephony.vt_cam_interface=1 \
     persist.vendor.radio.add_power_save=1 \
+    ro.com.android.dataroaming=false \
     persist.vendor.radio.apm_sim_not_pwdn=1 \
     persist.vendor.radio.arfcn_test_mode=3 \
     persist.vendor.radio.bar_fake_gcell=1 \
