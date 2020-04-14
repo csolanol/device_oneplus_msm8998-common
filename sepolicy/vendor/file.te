@@ -1,4 +1,5 @@
 type sysfs_rpm, sysfs_type, fs_type;
+type persist_camera_file, file_type;
 type debugfs_easel, debugfs_type, fs_type;
 type sysfs_touchpanel, sysfs_type, fs_type;
 type proc_touchpanel, fs_type, proc_type;
@@ -12,3 +13,4 @@ type sysfs_inpocket, fs_type, sysfs_type;
 type sysfs_device_info, fs_type, sysfs_type;
 type sysfs_fastcharge, fs_type, sysfs_type;
 type sysfs_audiogain, sysfs_type, fs_type;
+type wifi_nv_data_file, file_type, data_file_type;
