@@ -358,14 +358,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.arfcn_test_mode=3 \
     persist.vendor.radio.bar_fake_gcell=1 \
     persist.vendor.radio.custom_ecc=1 \
-    persist.vendor.radio.procedure_bytes=SKIP \
-    persist.vendor.radio.aosp_usr_pref_sel=true \
-    persist.vendor.radio.flexmap_type=none \
     persist.vendor.radio.data_con_rprt=1 \
     persist.vendor.radio.data_ltd_sys_ind=1 \
-    persist.vendor.radio.force_on_dc=true \
+    persist.vendor.radio.enableadvancedscan=true \
+    persist.vendor.radio.flexmap_type=none \
     persist.vendor.radio.ignore_dom_time=10 \
+    persist.vendor.radio.procedure_bytes=SKIP \
     persist.vendor.radio.rat_on=combine \
+    persist.vendor.radio.sap_silent_pin=1 \
     persist.vendor.radio.sib16_support=1 \
     ril.ecclist="112,911,999,*911" \
     ril.ecclist1="911,112,999,*911,991,994" \
@@ -376,6 +376,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     telephony.lteOnCdmaDevice=1,1 \
     vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
     persist.vendor.radio.uicc_se_enabled=false \
+    persist.vendor.radio.sw_mbn_update=0 \
 
 # RmNet Data
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -444,49 +445,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     sys.usb.rndis.func.name=gsi \
     sys.usb.rmnet.func.name=gsi
 
-# VoLTE/VoWifi options
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.dbg.ims_volte_enable=1 \
-    persist.dbg.volte_avail_ovr=1 \
-    persist.dbg.vt_avail_ovr=1 \
-    persist.dbg.wfc_avail_ovr=1
-
 # Vendor
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.va_aosp.support=1
-
-# VoLTE
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.ims.dropset_feature=0 \
-    persist.vendor.radio.add_power_save=1 \
-    persist.vendor.radio.force_on_dc=true \
-    persist.radio.custom_ecc=1 \
-    persist.radio.data_con_rprt=1 \
-    persist.radio.data_ltd_sys_ind=1 \
-    persist.radio.ignore_dom_time=10 \
-    persist.radio.rat_on=combine \
-    persist.radio.sib16_support=1 \
-    persist.radio.RATE_ADAPT_ENABLE=1 \
-    persist.radio.ROTATION_ENABLE=1 \
-    persist.radio.VT_ENABLE=1 \
-    persist.radio.VT_HYBRID_ENABLE=1 \
-    persist.radio.is_wps_enabled=true \
-    persist.radio.videopause.mode=1 \
-    persist.radio.sap_silent_pin=1 \
-    persist.radio.always_send_plmn=true \
-    persist.rcs.supported=0 \
-    persist.dbg.ims_volte_enable=1 \
-    persist.dbg.volte_avail_ovr=1 \
-    persist.dbg.vt_avail_ovr=1 \
-    persist.dbg.wfc_avail_ovr=1 \
-    persist.radio.calls.on.ims=1
-
-# VoLTE
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.dbg.ims_volte_enable=1 \
-    persist.dbg.volte_avail_ovr=1 \
-    persist.dbg.vt_avail_ovr=1 \
-    persist.dbg.wfc_avail_ovr=1
 
 # Wi-Fi
 PRODUCT_PROPERTY_OVERRIDES += \
