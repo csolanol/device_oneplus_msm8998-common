@@ -343,6 +343,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.use_old_mnc_mcc_format=true \
     ro.telephony.iwlan_operation_mode=legacy \
     persist.sys.oem_smooth=1 \
+    persist.vendor.ims.disableADBLogs=1 \
     persist.vendor.ims.dropset_feature=0 \
     persist.vendor.qti.telephony.vt_cam_interface=1 \
     persist.vendor.radio.add_power_save=1 \
