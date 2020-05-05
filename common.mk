@@ -94,6 +94,7 @@ PRODUCT_COPY_FILES += \
 # Google extra permissions and features
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/common/etc/permissions/com.oneplus.software.xml:system/etc/permissions/com.oneplus.software.xml \
+    $(LOCAL_PATH)/prebuilt/common/etc/permissions/privapp-permissions-aicp-prebuilts.xml:system/etc/permissions/privapp-permissions-aicp-prebuilts.xml \
     $(LOCAL_PATH)/prebuilt/common/etc/permissions/com.oneplus.software.overseas.xml:system/etc/permissions/com.oneplus.software.overseas.xml
 
 # Haters gonna hate..
