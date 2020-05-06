@@ -1,2 +1,4 @@
 allow wcnss_service sysfs_data:dir { search };
 allow wcnss_service sysfs_project_info:file { r_file_perms };
+# Allow wcnss_service to read files in sysfs_project_info
+r_dir_file(wcnss_service, sysfs_project_info)
