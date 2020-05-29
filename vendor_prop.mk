@@ -186,7 +186,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # 0 = disable
 # 9 = enable FD , TCM , disable CT , NSRM
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.dpm.feature=9
+    persist.vendor.dpm.feature=0
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
