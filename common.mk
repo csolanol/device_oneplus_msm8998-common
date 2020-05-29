@@ -124,6 +124,7 @@ PRODUCT_PACKAGES += \
     libbatterylistener \
     libcirrusspkrprot \
     libcomprcapture \
+    libeffectsconfig \
     libexthwplugin \
     libhdmiedid \
     libhfp \
@@ -171,11 +172,12 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
+    android.hardware.bluetooth.audio@2.0-impl \
     audio.bluetooth.default \
+    btconfig \
+    bt-mac-generator \
     libbt-vendor \
     libbthost_if \
-    bt-mac-generator \
-    android.hardware.bluetooth.audio@2.0-impl \
     vendor.qti.hardware.bluetooth_audio@2.0 \
     vendor.qti.hardware.bluetooth_audio@2.0.vendor \
     vendor.qti.hardware.bluetooth_dun@1.0.vendor
