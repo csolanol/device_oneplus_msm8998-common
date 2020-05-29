@@ -48,7 +48,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Audio new
 PRODUCT_PROPERTY_OVERRIDES += \
     af.resampler.quality=7 \
-    persist.vendor.audio.fluence.speaker=false \
+    persist.vendor.audio.fluence.speaker=true \
     persist.audio.fluence.voicecomm=true \
     persist.vendor.audio.fluence.voicecall=true \
     persist.vendor.audio.fluence.voicerec=true \
