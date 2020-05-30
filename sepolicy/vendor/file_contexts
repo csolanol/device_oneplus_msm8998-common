@@ -111,5 +111,6 @@
 /sys/devices/virtual/graphics/fb0/srgb           u:object_r:sysfs_dm:s0
 /sys/devices/virtual/graphics/fb0/dci_p3         u:object_r:sysfs_dm:s0
 /sys/devices/virtual/graphics/fb0/oneplus_mode   u:object_r:sysfs_dm:s0
+/sys/devices/virtual/graphics/fb0/measured_fps   u:object_r:sysfs_dm:s0
 
 /dev/stune(/.*)?                                 u:object_r:cgroup:s0
