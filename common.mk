@@ -345,11 +345,6 @@ PRODUCT_PACKAGES += \
     libregistermsext \
     mediametrics
 
-# Misc
-PRODUCT_PACKAGES += \
-    libchrome.vendor \
-    libp61-jcop-kit
-
 # Netutils
 PRODUCT_PACKAGES += \
     android.system.net.netd@1.0 \
@@ -358,19 +353,18 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.0:64 \
-    android.hardware.nfc@1.1:64 \
-    android.hardware.nfc@1.2:64 \
-    android.hardware.secure_element@1.0:64 \
-    android.hardware.secure_element@1.1:64 \
+    android.hardware.nfc@1.1-service \
     com.android.nfc_extras \
+    SecureElement \
+    NfcNci \
+    nqnfcee_access.xml \
+    nqnfcse_access.xml \
     Tag \
-    vendor.nxp.nxpese@1.0:64 \
-    vendor.nxp.nxpnfc@1.0:64
+    vendor.nxp.nxpese@1.0 \
+    vendor.nxp.nxpnfc@1.0
 
 PRODUCT_COPY_FILES += \
-   $(LOCAL_PATH)/configs/nfc/libnfc-nxp_RF.conf:$(TARGET_COPY_OUT_VENDOR)/libnfc-nxp_RF.conf \
-   $(call find-copy-subdir-files,*,${LOCAL_PATH}/configs/nfc,$(TARGET_COPY_OUT_VENDOR)/etc)
+    $(call find-copy-subdir-files,*,${LOCAL_PATH}/configs/nfc,$(TARGET_COPY_OUT_VENDOR)/etc)
 
 # OEM Unlock reporting
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -465,10 +459,6 @@ PRODUCT_BOOT_JARS += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml
-
-# Remove unwanted packages
-PRODUCT_PACKAGES += \
-    RemovePackages
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
