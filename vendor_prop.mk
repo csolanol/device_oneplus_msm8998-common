@@ -370,7 +370,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dataroaming=true \
     ro.telephony.default_network=22,20 \
     telephony.lteOnCdmaDevice=1,1 \
-    vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
+    vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
     persist.vendor.radio.uicc_se_enabled=false \
     persist.vendor.radio.sw_mbn_update=0 \
 
