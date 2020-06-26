@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013-2019, The Linux Foundation. All rights reserved.
+Copyright (c) 2013-2020, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -53,7 +53,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define IPA_V2_NUM_DEFAULT_WAN_FILTER_RULE_IPV4 2
 
 #ifdef FEATURE_IPA_ANDROID
-#define IPA_V2_NUM_DEFAULT_WAN_FILTER_RULE_IPV6 7
+#define IPA_V2_NUM_DEFAULT_WAN_FILTER_RULE_IPV6 4
 #define IPA_V2_NUM_TCP_WAN_FILTER_RULE_IPV6 3
 #define IPA_V2_NUM_MULTICAST_WAN_FILTER_RULE_IPV6 3
 #define IPA_V2_NUM_FRAG_WAN_FILTER_RULE_IPV6 1
@@ -89,6 +89,12 @@ typedef struct _ipa_wan_client
 	wan_client_rt_hdl wan_rt_hdl[0]; /* depends on number of tx properties */
 }ipa_wan_client;
 
+typedef struct
+{
+	bool coalesce_tcp_enable;
+	bool coalesce_udp_enable;
+}ipacm_coalesce;
+
 /* wan iface */
 class IPACM_Wan : public IPACM_Iface
 {
@@ -99,6 +105,8 @@ public:
 	static bool wan_up;
 	static bool wan_up_v6;
 	static uint8_t xlat_mux_id;
+	static uint16_t mtu_default_wan;
+	uint16_t mtu_size;
 	/* IPACM interface name */
 	static char wan_up_dev_name[IF_NAME_LEN];
 	static uint32_t curr_wan_ip;
@@ -129,6 +137,26 @@ public:
 #else
 		return wan_up;
 #endif
+	}
+
+	static uint16_t queryMTU(int ipa_if_num_tether, enum ipa_ip_type iptype)
+	{
+		if (iptype == IPA_IP_v4)
+		{
+			if (isWanUP(ipa_if_num_tether))
+			{
+				return mtu_default_wan;
+			}
+		}
+		else if (iptype == IPA_IP_v6)
+		{
+			if (isWanUP_V6(ipa_if_num_tether))
+			{
+				return mtu_default_wan;
+
+			}
+		}
+		return DEFAULT_MTU_SIZE;
 	}
 
 	static bool isWanUP_V6(int ipa_if_num_tether)
@@ -215,15 +243,48 @@ public:
 		return IPACM_SUCCESS;
 	}
 #endif
+	static void coalesce_config(uint8_t qmap_id, bool tcp_enable, bool udp_enable)
+	{
+		if (qmap_id >= IPA_MAX_NUM_SW_PDNS)
+		{
+			IPACMERR("qmap_id (%d) beyond the Max range (%d), abort\n",
+				qmap_id, IPA_MAX_NUM_SW_PDNS);
+			return ;
+		}
+
+		IPACM_Wan::coalesce_enable_info[qmap_id].coalesce_tcp_enable = tcp_enable;
+		IPACM_Wan::coalesce_enable_info[qmap_id].coalesce_udp_enable = udp_enable;
+		IPACMDBG_H(" Updated qmap(%d) coalesce enable TCP:%d UDP:%d\n",
+				qmap_id,
+				IPACM_Wan::coalesce_enable_info[qmap_id].coalesce_tcp_enable,
+				IPACM_Wan::coalesce_enable_info[qmap_id].coalesce_udp_enable);
+		return ;
+	}
+
+	static void coalesce_config_reset()
+	{
+		int i;
+		/* reset coalesce settings on all modem interfaces */
+		for (i = 0; i < IPA_MAX_NUM_SW_PDNS; i++)
+			IPACM_Wan::coalesce_config(i, false, false);
+		return ;
+	}
 
 	static uint32_t getWANIP()
 	{
 		return curr_wan_ip;
 	}
 
-	static bool getXlat_Mux_Id()
+	static int getXlat_Mux_Id()
 	{
-		return xlat_mux_id;
+		if (is_xlat)
+		{
+			IPACMDBG_H("xlat_mux_id: %d\n", xlat_mux_id);
+			return xlat_mux_id;
+		} else {
+			IPACMDBG_H("no xlat return invalid mux-id: 0\n");
+			return 0;
+		}
 	}
 
 	static void clearExtProp()
@@ -243,7 +304,7 @@ public:
 	static int num_v6_flt_rule;
 
 	ipacm_wan_iface_type m_is_sta_mode;
-	static bool backhaul_is_sta_mode;
+	static ipacm_wan_iface_type backhaul_mode;
 	static bool is_ext_prop_set;
 	static uint32_t backhaul_ipv6_prefix[2];
 
@@ -267,6 +328,9 @@ public:
 		return is_xlat;
 	}
 #endif
+
+	/* indicate coalesce support on tcp or udp*/
+	static ipacm_coalesce coalesce_enable_info[IPA_MAX_NUM_SW_PDNS];
 
 private:
 
@@ -298,6 +362,8 @@ private:
 	bool header_partial_default_wan_v6;
 	uint8_t ext_router_mac_addr[IPA_MAC_ADDR_SIZE];
 	uint8_t netdev_mac[IPA_MAC_ADDR_SIZE];
+	/* create additional set of v4 Coalesce RT-rules: tcp udp */
+	uint32_t dft_coalesce_rt_rule_hdl[2*MAX_DEFAULT_v4_ROUTE_RULES+ 2*MAX_DEFAULT_v6_ROUTE_RULES];
 
 	static int num_ipv4_modem_pdn;
 
@@ -326,6 +392,18 @@ private:
 	int ipa_network_stats_fd;
 	uint32_t hdr_hdl_dummy_v6;
 	uint32_t hdr_proc_hdl_dummy_v6;
+
+	/* handle for UDP mhi frag rule */
+	uint32_t mhi_dl_v4_frag_hdl;
+
+	/* handle for icmpv6 exception rule */
+	uint32_t icmpv6_exception_hdl;
+
+	/* handle for TCP FIN rule */
+	uint32_t tcp_fin_hdl;
+
+	/* handle for TCP RST rule */
+	uint32_t tcp_rst_hdl;
 
 	inline ipa_wan_client* get_client_memptr(ipa_wan_client *param, int cnt)
 	{
@@ -512,6 +590,9 @@ private:
 	/* handle new_address event */
 	int handle_addr_evt(ipacm_event_data_addr *data);
 
+	/* handle new_address event for q6_mhi */
+	int handle_addr_evt_mhi_q6(ipacm_event_data_addr *data);
+
 	/* wan default route/filter rule configuration */
 	int handle_route_add_evt(ipa_ip_type iptype);
 
@@ -564,13 +645,7 @@ private:
 
 	int add_dft_filtering_rule(struct ipa_flt_rule_add* rules, int rule_offset, ipa_ip_type iptype);
 
-	int add_tcpv6_filtering_rule(struct ipa_flt_rule_add* rules, int rule_offset);
-
 	int install_wan_filtering_rule(bool is_sw_routing);
-
-	void change_to_network_order(ipa_ip_type iptype, ipa_rule_attrib* attrib);
-
-	bool is_global_ipv6_addr(uint32_t* ipv6_addr);
 
 	void handle_wlan_SCC_MCC_switch(bool, ipa_ip_type);
 
@@ -584,6 +659,23 @@ private:
 
 	/* construct dummy ethernet header */
 	int add_dummy_rx_hdr();
+
+	int handle_coalesce_evt();
+
+	int add_offload_frag_rule();
+
+	int delete_offload_frag_rule();
+
+	int add_icmpv6_exception_rule();
+
+	int delete_icmpv6_exception_rule();
+
+	int add_tcp_fin_rst_exception_rule();
+
+	int delete_tcp_fin_rst_exception_rule();
+
+	/* Query mtu size */
+	int query_mtu_size();
 };
 
 #endif /* IPACM_WAN_H */
