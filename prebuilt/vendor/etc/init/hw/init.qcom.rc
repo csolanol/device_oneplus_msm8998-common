@@ -72,6 +72,8 @@ on init
 
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
+    start vendor.ipacm
+    start vendor.ipacm-diag
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -603,6 +605,19 @@ service vendor.qmuxd /system/vendor/bin/qmuxd
     class main
     user radio
     group radio audio bluetooth gps nfc diag
+    disabled
+
+service vendor.ipacm-diag /system/vendor/bin/ipacm-diag
+    class main
+    user radio
+    socket ipacm_log_file dgram 660 radio radio
+    group radio diag oem_2901
+    disabled
+
+service vendor.ipacm /system/vendor/bin/ipacm
+    class main
+    user radio
+    group radio inet
     disabled
 
 #service vendor.sensors /vendor/bin/sscrpcd sensorspd
