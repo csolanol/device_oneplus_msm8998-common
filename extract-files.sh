@@ -55,7 +55,7 @@ fi
 function blob_fixup() {
     case "${1}" in
     product/lib64/libdpmframework.so | product/lib/libdpmframework.so )
-        sed -i "s/libhidltransport.so/libcutils-v29.so\x00\x00\x00/" "${2}"
+        patchelf --add-needed "libshim_dpmframework.so" "${2}"
     ;;
     lib64/libwfdnative.so | lib/libwfdnative.so )
         patchelf --remove-needed "android.hidl.base@1.0.so" "${2}"
