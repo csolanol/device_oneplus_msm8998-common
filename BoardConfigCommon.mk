@@ -24,9 +24,6 @@
 
 BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 
-# Inherit from oppo-common
--include device/oppo/common/BoardConfigCommon.mk
-
 PLATFORM_PATH := device/oneplus/msm8998-common
 
 TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/include
@@ -81,7 +78,9 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
-TARGET_KERNEL_CONFIG := lineage_oneplus5_defconfig
+TARGET_KERNEL_CONFIG := aicp_oneplus5_defconfig
+TARGET_KERNEL_CLANG_CUSTOM := true
+TARGET_KERNEL_CLANG_VERSION := latest
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
