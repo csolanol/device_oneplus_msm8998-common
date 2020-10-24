@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2012 The Android Open Source Project
+               (C) 2015 The CyanogenMod Project
+               (C) 2017 The LineageOS Project
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!-- PartsBin app resources that may need to be customized
+     for different hardware or product builds. -->
+<resources>
+
+    <!-- Path to devices High Brigness Mode toggle file -->
+    <string name="pathHBMModeToggle">/sys/devices/virtual/graphics/fb0/hbm</string>
+
+    <!-- Path to devices NightMode toggle file -->
+    <string name="pathNightModeToggle">/sys/devices/virtual/graphics/fb0/night_mode</string>
+
+    <!-- Path to devices SRGBMode toggle file -->
+    <string name="pathSRGBModeToggle">/sys/devices/virtual/graphics/fb0/SRGB</string>
+
+    <!-- Path to devices DCI-P3 toggle file -->
+    <string name="pathDCIModeToggle">/sys/devices/virtual/graphics/fb0/DCI_P3</string>
+
+    <!-- Path to devices OnePlus mode toggle file -->
+    <string name="pathOnePlusModeToggle">/sys/devices/virtual/graphics/fb0/oneplus_mode</string>
+
+    <!-- Path to devices FastCharge sysfs -->
+    <string name="pathFastChargeToggle">/sys/kernel/fast_charge/force_fast_charge</string>
+
+    <!-- Whether device allow changing vibrationlevels -->
+    <string name="pathSystemVibStrength">/sys/devices/virtual/timed_output/vibrator/vtg_level</string>
+    <integer name="vibratorMinMV">116</integer>
+    <integer name="vibratorMaxMV">3596</integer>
+    <integer name="vibratorDefaultMV">2700</integer>
+
+    <!-- Device earpiece gain sysfs -->
+    <string name="pathAudioEarpieceGain">/sys/kernel/sound_control/earpiece_gain</string>
+
+    <!-- Device earpiece gain min-max-default values -->
+    <integer name="audioEarpieceMin">-10</integer>
+    <integer name="audioEarpieceMax">20</integer>
+    <integer name="audioEarpieceDefault">0</integer>
+
+    <!-- Device audio mic gain sysfs -->
+    <string name="pathAudioMicGain">/sys/kernel/sound_control/mic_gain</string>
+
+    <!-- Device audio mic min-max-default values -->
+    <integer name="audioMicGainMin">-10</integer>
+    <integer name="audioMicGainMax">20</integer>
+    <integer name="audioMicGainDefault">0</integer>
+
+    <!-- Device audio headphone gain sysfs -->
+    <string name="pathAudioHeadphoneGain">/sys/kernel/sound_control/headphone_gain</string>
+
+    <!-- Device audio headphone min-max-default values -->
+    <integer name="audioHeadphoneGainMin">-84</integer>
+    <integer name="audioHeadphoneGainMax">20</integer>
+    <integer name="audioHeadphoneGainDefault">0</integer>
+</resources>

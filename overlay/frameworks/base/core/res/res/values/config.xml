@@ -456,7 +456,7 @@
     <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
 
     <!-- Whether the display blanks itself when transitioning from a doze to a non-doze state -->
-    <bool name="config_displayBlanksAfterDoze">false</bool> 
+    <bool name="config_displayBlanksAfterDoze">false</bool>
 
     <!-- Allow automatic adjusting of the screen brightness while dozing in low power state. -->
     <bool name="config_allowAutoBrightnessWhileDozing">true</bool>
@@ -593,6 +593,12 @@
         <item>0:2:15</item> <!-- ID0:Fingerprint:Strong -->
     </string-array>
 
-    <!-- Whether device has dash charging support -->
-    <bool name="config_hasDashCharger">true</bool>
+    <!-- Path to the library that contain device specific key handler -->
+    <string name="config_customKeyHandlerLib" translatable="false">/system/priv-app/PartsBin/PartsBin.apk</string>
+
+    <!-- Name of the key handler class -->
+    <string name="config_customKeyHandlerClass" translatable="false">com.aicp.device.KeyHandler</string>
+
+    <!-- Whether key handler sends intent when changing slider position -->
+    <string name="config_alertSliderIntent">com.aicp.device.UPDATE_SLIDER_POSITION</string>
 </resources>

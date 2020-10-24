@@ -394,6 +394,9 @@ PRODUCT_PACKAGES += \
     libOmxVenc \
     libstagefright_softomx \
     libstagefrighthw
+# PartsBin
+PRODUCT_PACKAGES += \
+    PartsBin
 
 # Power
 PRODUCT_PACKAGES += \
