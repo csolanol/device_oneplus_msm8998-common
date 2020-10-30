@@ -22,6 +22,7 @@
 # definition file).
 #
 
+BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 
 PLATFORM_PATH := device/oneplus/msm8998-common
