@@ -53,6 +53,9 @@ on boot
     chown system system /sys/kernel/sound_control/mic_gain
     chmod 0664 /sys/kernel/sound_control/mic_gain
 
+    chown system system /sys/class/power_supply/battery/fastchg_status
+    chmod 0664 /sys/class/power_supply/battery/fastchg_status
+
 service vendor.wifi-mac-generator /vendor/bin/wifi-mac-generator
     class main
     user wifi
