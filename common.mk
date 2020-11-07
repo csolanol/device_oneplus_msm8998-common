@@ -382,6 +382,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.oem_unlock_supported=1
 
+# OmniJaws
+PRODUCT_PACKAGES += \
+    OmniJaws
+
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
@@ -398,6 +402,7 @@ PRODUCT_PACKAGES += \
     libOmxVenc \
     libstagefright_softomx \
     libstagefrighthw
+
 # PartsBin
 PRODUCT_PACKAGES += \
     PartsBin
