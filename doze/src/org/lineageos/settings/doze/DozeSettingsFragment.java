@@ -53,7 +53,7 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
     private View mSwitchBar;
 
     private ColorPickerPreference mEdgeLightColorPref;
-//    private ListPreference mEdgeLightColorModePref;
+    private ListPreference mEdgeLightColorModePref;
 
     private SwitchPreference mPickUpPreference;
     private SwitchPreference mHandwavePreference;
@@ -88,7 +88,6 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
         mPocketPreference.setEnabled(dozeEnabled);
         mPocketPreference.setOnPreferenceChangeListener(this);
 
-        /*
         mEdgeLightColorModePref = (ListPreference) findPreference(PULSE_AMBIENT_LIGHT_COLOR_MODE);
         mEdgeLightColorModePref.setOnPreferenceChangeListener(this);
         mEdgeLightColorPref = (ColorPickerPreference) findPreference(PULSE_AMBIENT_LIGHT_COLOR);
@@ -101,7 +100,6 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
         if (!Utils.getProxCheckBeforePulse(getActivity())) {
             getPreferenceScreen().removePreference(proximitySensorCategory);
         }
-        */
     }
 
     @Override
@@ -135,11 +133,11 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-/*        if (mEdgeLightColorModePref.equals(preference)) {
+        if (mEdgeLightColorModePref.equals(preference)) {
             int edgeLightColorMode = Integer.valueOf((String) newValue);
             updateColorPrefs(edgeLightColorMode);
             return true;
-        }*/
+        }
         Utils.checkDozeService(getActivity());
         return true;
     }

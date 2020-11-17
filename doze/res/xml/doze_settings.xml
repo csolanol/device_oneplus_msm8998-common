@@ -67,7 +67,7 @@
             android:icon="@drawable/ic_pocket" />
 
     </PreferenceCategory>
-<!--
+
     <PreferenceCategory
         android:key="ambient_light"
         android:title="@string/pulse_ambient_light_enable_title">
@@ -126,5 +126,5 @@
             android:summary="@string/pulse_ambient_light_repeat_direction_summary"
             android:dependency="pulse_ambient_light" />
     </PreferenceCategory>
--->
+
 </PreferenceScreen>
