@@ -25,10 +25,10 @@
     <string name="pathNightModeToggle">/sys/devices/virtual/graphics/fb0/night_mode</string>
 
     <!-- Path to devices SRGBMode toggle file -->
-    <string name="pathSRGBModeToggle">/sys/devices/virtual/graphics/fb0/SRGB</string>
+    <string name="pathSRGBModeToggle">/sys/devices/virtual/graphics/fb0/srgb</string>
 
     <!-- Path to devices DCI-P3 toggle file -->
-    <string name="pathDCIModeToggle">/sys/devices/virtual/graphics/fb0/DCI_P3</string>
+    <string name="pathDCIModeToggle">/sys/devices/virtual/graphics/fb0/dci_p3</string>
 
     <!-- Path to devices OnePlus mode toggle file -->
     <string name="pathOnePlusModeToggle">/sys/devices/virtual/graphics/fb0/oneplus_mode</string>

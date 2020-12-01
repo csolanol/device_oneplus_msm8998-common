@@ -56,6 +56,13 @@ on boot
     chown system system /sys/class/power_supply/battery/fastchg_status
     chmod 0664 /sys/class/power_supply/battery/fastchg_status
 
+    chown system system /sys/kernel/fast_charge/force_fast_charge
+    chmod 0664 /sys/kernel/fast_charge/force_fast_charge
+
+    # System Info
+    chown system system /sys/class/power_supply/battery/temp
+    chmod 0644 /sys/class/power_supply/battery/temp
+
 service vendor.wifi-mac-generator /vendor/bin/wifi-mac-generator
     class main
     user wifi

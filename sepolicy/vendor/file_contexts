@@ -31,6 +31,7 @@
 /sys/devices/virtual/graphics/fb0/night_mode                     u:object_r:sysfs_dm:s0
 /sys/devices/virtual/graphics/fb0/dci_p3                         u:object_r:sysfs_dm:s0
 /sys/devices/virtual/graphics/fb0/oneplus_mode                   u:object_r:sysfs_dm:s0
+/sys/devices/virtual/graphics/fb0/measured_fps                   u:object_r:sysfs_dm:s0
 
 # DPM
 /system/product/bin/dpmd                                        u:object_r:vendor_dpmd_exec:s0
@@ -88,10 +89,11 @@
 
 /sys/kernel/pocket_judge/inpocket                               u:object_r:sysfs_inpocket:s0
 
+# QuickSettings SystemInfo
 /sys/class/thermal/thermal_zone0/temp                           u:object_r:sysfs_device_info:s0
 /sys/class/power_supply/battery/temp                            u:object_r:sysfs_device_info:s0
-/sys/kernel/gpu/gpu_clock                                       u:object_r:sysfs_device_info:s0
-/sys/kernel/gpu/gpu_busy                                        u:object_r:sysfs_device_info:s0
+
+/sys/kernel/fast_charge/force_fast_charge                       u:object_r:sysfs_fastcharge:s0
 
 # Root files
 /firmware(/.*)?                                                 u:object_r:firmware_file:s0
