@@ -11,4 +11,7 @@ allow platform_app sysfs_device_info:file { open read };
 allow platform_app sysfs_battery_supply:dir { search };
 allow platform_app sysfs_battery_supply:file { open getattr read };
 
+allow platform_app sysfs_graphics:dir { search };
+allow platform_app sysfs_graphics:file { open getattr read };
+
 allow platform_app sysfs_dm:file { open getattr read };
