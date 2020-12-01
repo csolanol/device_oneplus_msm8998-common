@@ -40,8 +40,8 @@ on boot
     chmod 0660 /proc/tri-state-key/keyCode_bottom
 
     # Pocket judge sysfs permissions
-    #chown system system /sys/kernel/pocket_judge/inpocket
-    #chmod 0664 /sys/kernel/pocket_judge/inpocket
+    chown system system /sys/kernel/pocket_judge/inpocket
+    chmod 0664 /sys/kernel/pocket_judge/inpocket
 
     # PartsBin sysfs permissions
     chown system system /sys/kernel/fast_charge/force_fast_charge
