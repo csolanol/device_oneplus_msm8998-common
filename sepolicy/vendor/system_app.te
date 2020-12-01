@@ -11,6 +11,13 @@ allow system_app sysfs_fpc:file { rw_file_perms };
 allow system_app sysfs_graphics:dir search;
 allow system_app sysfs_dm:file { getattr open read write };
 
+# Access rules for forcing fastcharge
+allow system_app sysfs_fastcharge:dir { search };
+allow system_app sysfs_fastcharge:file { rw_file_perms };
+
+allow system_app sysfs_audiogain:dir { search };
+allow system_app sysfs_audiogain:file { rw_file_perms };
+
 # Allow system app to access for camera prop
 get_prop(system_app, vendor_camera_prop)
 
