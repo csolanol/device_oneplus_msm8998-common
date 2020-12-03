@@ -27,6 +27,9 @@
     <!-- Path to devices SRGBMode toggle file -->
     <string name="pathSRGBModeToggle">/sys/devices/virtual/graphics/fb0/srgb</string>
 
+    <!-- Path to devices AdobeRGBMode toggle file -->
+    <string name="pathAdobeRGBModeToggle">/sys/devices/virtual/graphics/fb0/adobe_rgb</string>
+
     <!-- Path to devices DCI-P3 toggle file -->
     <string name="pathDCIModeToggle">/sys/devices/virtual/graphics/fb0/dci_p3</string>
 
