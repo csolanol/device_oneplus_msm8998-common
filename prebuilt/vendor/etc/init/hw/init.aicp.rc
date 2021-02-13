@@ -63,6 +63,20 @@ on boot
     chown system system /sys/class/power_supply/battery/temp
     chmod 0644 /sys/class/power_supply/battery/temp
 
+    # Battery Health
+    chown system system /sys/class/power_supply/bms/charge_full
+    chmod 0644 /sys/class/power_supply/bms/charge_full
+    chown system system /sys/class/power_supply/bms/charge_full_design
+    chmod 0644 /sys/class/power_supply/bms/charge_full_design
+    chown system system /sys/class/power_supply/bms/cycle_count
+    chmod 0644 /sys/class/power_supply/bms/cycle_count
+    chown system system /sys/class/power_supply/bms/charge_counter
+    chmod 0644 /sys/class/power_supply/bms/charge_counter
+    chown system system /sys/class/power_supply/bms/battery_health
+    chmod 0644 /sys/class/power_supply/bms/battery_health
+    chown system system /sys/class/power_supply/bms/battery_type
+    chmod 0644 /sys/class/power_supply/bms/battery_type
+
 service vendor.wifi-mac-generator /vendor/bin/wifi-mac-generator
     class main
     user wifi
